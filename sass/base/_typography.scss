@@ -1,5 +1,9 @@
 @use '../abstracts' as A;
 
+:root {
+    font-size: clamp(12px, 2vw, 18px);
+}
+
 body {
     font-family: A.$main-font;
 }
