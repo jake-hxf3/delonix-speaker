@@ -5,10 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/grid.css" rel="stylesheet" type="text/css">
     <link href="css/main.css" rel="stylesheet" type="text/css">
-    <title>Document</title>
+    <title>Delonix Bluetooth Speaker - FSD DEMO</title>
 </head>
     <body>
+        <h1>Introducing the FSD Delonix Bluetooth Speaker</h1>
+        <div class="grid-con center-grid-con">
+            <section class="col-span-full">
+                <h2 class="hidden">Preview of the Model</h2>
+                <model-viewer src="prism.gltf" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="neutral" poster="poster.webp" shadow-intensity="0.89" autoplay exposure="1" shadow-softness="1">
+                    <button class="Hotspot" slot="hotspot-8" data-surface="38 0 668 667 666 -3.490 3.605 0.885" data-visibility-attribute="visible">
+                        <div class="HotspotAnnotation">Power of the Phoenix Flames</div>
+                    </button><button class="Hotspot" slot="hotspot-9" data-surface="26 0 14 78 77 0.522 0.006 0.472" data-visibility-attribute="visible">
+                        <div class="HotspotAnnotation">High Fidelity Bass Boosters</div>
+                    </button><button class="Hotspot" slot="hotspot-11" data-surface="14 0 332 331 330 -0.124 0.325 0.799" data-visibility-attribute="visible">
+                        <div class="HotspotAnnotation">Synchronized Controls</div>
+                    </button><button class="Hotspot" slot="hotspot-14" data-surface="15 0 61 48 55 0.026 0.938 0.036" data-visibility-attribute="visible">
+                        <div class="HotspotAnnotation">Synchronized Controls</div>
+                    </button><button class="Hotspot" slot="hotspot-16" data-surface="18 0 826 825 824 -2.812 0.756 3.055" data-visibility-attribute="visible">
+                        <div class="HotspotAnnotation">Multi-port</div>
+                    </button>
+                    <div class="progress-bar hide" slot="progress-bar">
+                        <div class="update-bar"></div>
+                    </div>
+                    <button slot="ar-button" id="ar-button">
+                        View in your space
+                    </button>
+                    <div id="ar-prompt">
+                        <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
+                    </div>
+                </model-viewer>                
+            </section>
+        </div>
 
+
+        <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.4.0/model-viewer.min.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>
