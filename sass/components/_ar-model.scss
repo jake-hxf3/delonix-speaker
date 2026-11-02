@@ -40,12 +40,12 @@ model-viewer {
   font-family: 'Georama', Helvetica Neue, sans-serif;
   font-size: 1.15rem;
   font-weight: 700;
-  left: calc(100% + 1rem);
-  max-width: min(40vw, 300px);
+  max-width: min(30vw, 300px);
   overflow-wrap: break-word;
   padding: 0.5rem 1rem;
   position: absolute;
-  top: -300%;
+  top: -50%;
+  left: calc(100% + 1rem);
   width: max-content;
   text-align: left;
 }
