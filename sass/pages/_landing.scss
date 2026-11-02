@@ -1,1 +1,12 @@
-@use '../abstracts';
+@use 'sass:color';
+@use '../abstracts' as A;
+
+body {
+    background-color: black;
+}
+
+h1 {
+    text-align: center;
+    margin-block: 30px;
+    color: color.scale(A.$red, $lightness: 30%);
+}

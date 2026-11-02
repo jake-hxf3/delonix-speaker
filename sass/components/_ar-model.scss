@@ -1,8 +1,10 @@
+@use '../abstracts' as A;
+
 model-viewer {
   width: auto;
   max-width: 1200px;
   height: 700px;
-  background-color: #ffffff;
+  background-image: linear-gradient(A.$grad-blue-1, A.$red, A.$grad-blue-2);
   margin: 0 auto;
 }
 
@@ -11,22 +13,18 @@ model-viewer {
   border: 0;
   cursor: pointer;
   width: 45px;
-  height: 39px;
-  transition: all 1s ease-in-out;
+  aspect-ratio: 1/1;
 }
 
 .Hotspot:not([data-visible]) {
-opacity: 0;
-    width: 45px;
-    height: 38px;
-    pointer-events: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .Hotspot:focus {
   border: 4px solid rgb(0, 128, 200);
   height: 32px;
   outline: none;
-  width: 32px;
 }
 
 
@@ -39,7 +37,7 @@ opacity: 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   color: rgba(0, 0, 0, 0.8);
   display: block;
-  font-family: Futura, Helvetica Neue, sans-serif;
+  font-family: 'Georama', Helvetica Neue, sans-serif;
   font-size: 18px;
   font-weight: 700;
   left: calc(100% + 1em);
