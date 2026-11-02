@@ -1,5 +1,7 @@
-# Project Name to be EDITED
+# Delonix Bluetooth Speaker
 ![insert alt text](images/example.jpg)
+
+This webpage is a 3D demo of my latest creation - the FSD Delonix Bluetooth Speaker.
 
 
 ## Installation
