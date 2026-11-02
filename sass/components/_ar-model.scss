@@ -44,7 +44,7 @@ model-viewer {
   overflow-wrap: break-word;
   padding: 0.5rem 1rem;
   position: absolute;
-  top: -50%;
+  bottom: -100%;
   left: calc(100% + 1rem);
   width: max-content;
   text-align: left;
