@@ -41,6 +41,10 @@ hotspots.forEach((spot, index) => {
     spot.addEventListener("click", positionAnnotation);
 
     let anno = temp.content.cloneNode(true);
+    anno.querySelector(".title").textContent = delonixInfo[index].title;
+    anno.querySelector(".desc").textContent = delonixInfo[index].desc;
+    anno.querySelector("img").src = `images/${delonixInfo[index].img}`;
+
     spot.appendChild(anno);
 })
 
