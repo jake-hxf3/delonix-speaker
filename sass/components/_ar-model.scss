@@ -85,9 +85,20 @@ model-viewer {
   //The ::part CSS pseudo-element represents any element within a shadow tree that has a matching part attribute.
   model-viewer::part(default-progress-bar) {
     height: 30px;
-    background-color: #E89B36;
+    width: 100%;
+    background-color: A.$red;
   }
   
   model-viewer::part(default-progress-mask) {
     display: none;
   }
+
+@media screen and (max-width: 768px) {
+  .HotspotAnnotation{
+    position: fixed;
+    margin: 15px 25px;
+    bottom: 0;
+    right: 0;
+    width: max-content;
+  }
+}

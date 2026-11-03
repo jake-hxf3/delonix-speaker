@@ -2,10 +2,13 @@
 console.log("JS file connected");
 
 const viewer = document.querySelector("model-viewer");
-const viewerCon = document.querySelector("#viewer-con");
 const hotspots = document.querySelectorAll(".Hotspot");
+const lb = document.querySelector("#lightbox");
 
 const temp = document.querySelector("#annotation-template");
+
+let spotElem = null;
+let annoElem = null;
 
 const delonixInfo = [
     {
@@ -31,21 +34,53 @@ const delonixInfo = [
 ];
 
 
+function lightbox() {
+    console.log("lightbox triggered");
+    if ((!annoElem) || (!spotElem)) return;
+    if (window.innerWidth < 768) {
+        lb.appendChild(annoElem);
+        lb.classList.remove("hidden");
+        annoElem.classList.add("col-span-full");
+    } else {
+        spotElem.appendChild(annoElem);
+    }
+}
 
-function positionAnnotation(elem) {
+function darkbox() {
+ /*   if((annoElem) && (spotElem)) {
+        lb.classList.add("hidden");
+        spotElem.appendChild(annoElem);
+    }  */
+}
+
+function positionAnnotation() {
     console.log("fired");
-    console.log(`${elem.offsetLeft}, ${elem.offsetTop}`);
+
 }
 
 hotspots.forEach((spot, index) => {
-    spot.addEventListener("click", positionAnnotation);
+    spot.addEventListener("mouseover", () => {
+        spotElem = spot;
+        annoElem = spot.querySelector(`#anno-${spot.slot}`);
+
+        console.log(spotElem);
+        console.log(annoElem);
+
+        positionAnnotation();
+        lightbox();
+    });
 
     let anno = temp.content.cloneNode(true);
+
     anno.querySelector(".title").textContent = delonixInfo[index].title;
     anno.querySelector(".desc").textContent = delonixInfo[index].desc;
     anno.querySelector("img").src = `images/${delonixInfo[index].img}`;
 
     spot.appendChild(anno);
+    spot.firstElementChild.id = `anno-${spot.slot}`;
 })
+
+/*lb.addEventListener("mouseover", darkbox);
+lb.addEventListener("click", darkbox);*/
 
 })();
