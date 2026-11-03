@@ -3,6 +3,7 @@ console.log("JS file connected");
 
 const viewer = document.querySelector("model-viewer");
 const viewerCon = document.querySelector("#viewer-con");
+const hotspots = document.querySelectorAll(".Hotspot");
 
 const delonixInfo = [
     {
@@ -26,5 +27,14 @@ const delonixInfo = [
         img: "beak.svg"
     },
 ];
+
+function positionAnnotation(elem) {
+    console.log("fired");
+    console.log(`${elem.offsetLeft}, ${elem.offsetTop}`);
+}
+
+hotspots.forEach((elem) => {
+    elem.addEventListener("click", positionAnnotation);
+})
 
 })();
