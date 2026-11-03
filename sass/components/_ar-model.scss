@@ -38,13 +38,13 @@ model-viewer {
   box-shadow: 0 2px 4px rgba(255, 255, 255, 0.25);
   color: white;
   display: grid;
-  grid-template-columns: 70px 1fr;
+  grid-template-columns: 23.3% 1fr;
   align-items: end;
   gap: 1rem;
   font-family: 'Georama', Helvetica Neue, sans-serif;
   font-size: 1.15rem;
   font-weight: 700;
-  max-width: min(30vw, 275px);
+  max-width: min(30vw, 250px);
   overflow-wrap: break-word;
   padding: 0.5rem 1rem;
   position: absolute;

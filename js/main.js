@@ -5,6 +5,8 @@ const viewer = document.querySelector("model-viewer");
 const viewerCon = document.querySelector("#viewer-con");
 const hotspots = document.querySelectorAll(".Hotspot");
 
+const temp = document.querySelector("#annotation-template");
+
 const delonixInfo = [
     {
         title: "Power of the Phoenix Flames",
@@ -28,13 +30,22 @@ const delonixInfo = [
     },
 ];
 
+
+
 function positionAnnotation(elem) {
     console.log("fired");
     console.log(`${elem.offsetLeft}, ${elem.offsetTop}`);
 }
 
-hotspots.forEach((elem) => {
-    elem.addEventListener("click", positionAnnotation);
+hotspots.forEach((spot, index) => {
+    spot.addEventListener("click", positionAnnotation);
+
+    let anno = temp.content.cloneNode(true);
+    anno.querySelector(".title").textContent = delonixInfo[index].title;
+    anno.querySelector(".desc").textContent = delonixInfo[index].desc;
+    anno.querySelector("img").src = `images/${delonixInfo[index].img}`;
+
+    spot.appendChild(anno);
 })
 
 })();
