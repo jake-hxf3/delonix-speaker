@@ -38,10 +38,15 @@
   }
 }
 
-%div-image {
-    min-height: 10px;
-    min-width: 10px;
+%true-bg {
+    background-size: cover;
     background-position: center center;
-    background-size: contain;
     background-repeat: no-repeat;
+}
+
+%div-image {
+    @extend %true-bg;
+    min-height: 33px;
+    min-width: 33px;
+    background-size: contain;
 }
