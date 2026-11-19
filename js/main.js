@@ -1,6 +1,9 @@
 (() => {
 console.log("JS file connected");
 
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
+
 // Burger Menu
 const burgerBtn = document.querySelector("#burger-btn");
 let burgerHidden = true;
@@ -54,8 +57,7 @@ const delonixInfo = [
 for(let i = 0; i < frameCount; i++) {
     const img = new Image();
     img.src = `images/exploded/exploded_${(i + 1).toString().padStart(5, '0')}.webp`;
-    console.log(img.src);
-    //images.push(img);
+    images.push(img);
 };
 
 
