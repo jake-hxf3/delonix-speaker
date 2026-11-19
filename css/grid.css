@@ -16,7 +16,7 @@ html {
 /* ---Mini CSS reset--- */
 
 body {
-   min-width: 150px;
+   min-width: 300px;
 }
 
 body, p, h1, h2, h3, h4, h5 {
@@ -113,7 +113,6 @@ body, p, h1, h2, h3, h4, h5 {
 .col-end-3	{grid-column-end: 3;}
 .col-end-4	{grid-column-end: 4;}
 .col-end-5	{grid-column-end: 5;}
-
 
 /* ---Tablet Library Grid Styles--- */
 
