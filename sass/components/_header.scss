@@ -7,14 +7,18 @@ header {
     #main-header {
         order: -1;
         align-items: center;
-        color: white;
+        background-color: #000;
+        color: #fff;
         
         nav ul {
             @extend %horizontal-list;
+
+            li a:hover {
+                color: A.$grad-red;
+            }
         }
 
         #nav-links {
-            font-size: 0.65rem;
             text-transform: uppercase;
 
             li {
@@ -23,11 +27,11 @@ header {
         }
 
         #nav-icons {
-            font-size: 1rem;
+            font-size: 1.5rem;
             justify-content: end;
 
             li {
-                margin-inline: 0.25rem;
+                margin-inline: 0.5rem;
             }            
         }
 
