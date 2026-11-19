@@ -3,6 +3,7 @@ console.log("JS file connected");
 
 // Burger Menu
 const burgerBtn = document.querySelector("#burger-btn");
+let burgerHidden = true;
 
 // Model Viewer
 const viewer = document.querySelector("model-viewer");
@@ -49,6 +50,8 @@ const delonixInfo = [
 
 function toggleMobileMenu() {
     burgerBtn.classList.toggle("clicked");
+    burgerHidden = !burgerHidden;
+    burgerBtn.ariaExpanded = burgerHidden;
 }
 
 
