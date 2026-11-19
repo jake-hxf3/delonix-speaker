@@ -17,7 +17,7 @@ const hotspots = document.querySelectorAll(".Hotspot");
 const canvas = document.querySelector("#explode-view");
 const ctx = canvas.getContext("2d");
 
-const frameCount = 375;
+const frameCount = 374;
 let images = []; // store images of the exploded animation frames and their sources
 
 const frames = {
@@ -54,11 +54,32 @@ const delonixInfo = [
 
 // Canvas Animation
 // populate the image array
+canvas.width = 1920;
+canvas.height = 1080;
+
 for(let i = 0; i < frameCount; i++) {
     const img = new Image();
     img.src = `images/exploded/exploded_${(i + 1).toString().padStart(5, '0')}.webp`;
     images.push(img);
 };
+
+gsap.to(frames, {
+    frame: frameCount - 1,
+    ease: "none",
+    snap: "frame",
+    scrollTrigger: {
+        trigger: "#explode-view",
+        pin: true,
+        start: "top top",
+        markers: true,
+        scrub: 1
+    },
+    onUpdate: render
+});
+
+function render() {
+    console.log(frames.frame);
+}
 
 
 // Functions
