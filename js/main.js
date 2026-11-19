@@ -54,8 +54,8 @@ const delonixInfo = [
 
 // Canvas Animation
 // populate the image array
-canvas.width = 1920;
-canvas.height = 1080;
+canvas.width = 1280;
+canvas.height = 720;
 
 for(let i = 0; i < frameCount; i++) {
     const img = new Image();
@@ -71,7 +71,6 @@ gsap.to(frames, {
         trigger: "#explode-view",
         pin: true,
         start: "top top",
-        markers: true,
         scrub: 1
     },
     onUpdate: render
