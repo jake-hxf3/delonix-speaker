@@ -8,6 +8,13 @@ body {
     font-family: A.$main-font;
 }
 
+h2 {
+    text-align: left;
+    margin-block: 2.5rem;
+    color: color.scale(A.$red, $lightness: 30%);
+    z-index: 5;
+}
+
 @media screen and (min-width: 768px) {
     :root {
         font-size: calc(1px + 1.25vw);        

@@ -5,13 +5,6 @@ body {
     background-color: black;
 }
 
-h1 {
-    text-align: left;
-    margin-block: 30px;
-    color: color.scale(A.$red, $lightness: 30%);
-    z-index: 5;
-}
-
 #hero {
     position: relative;
     overflow: hidden;
