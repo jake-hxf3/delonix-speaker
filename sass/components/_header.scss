@@ -6,9 +6,29 @@ header {
 
     #main-header {
         order: -1;
+        align-items: center;
+        color: white;
         
         nav ul {
             @extend %horizontal-list;
+        }
+
+        #nav-links {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+
+            li {
+                margin-inline: 1rem;
+            }
+        }
+
+        #nav-icons {
+            font-size: 1rem;
+            justify-content: end;
+
+            li {
+                margin-inline: 0.25rem;
+            }            
         }
 
         .logo {
@@ -35,4 +55,10 @@ header {
 
 nav ul {
     @extend %reset-list;
+}
+
+@media screen and (min-width: 768px) {
+    #burger-btn {
+        display: none;
+    }
 }
