@@ -32,7 +32,7 @@ const delonixInfo = [
 
 
 
-function positionAnnotation(elem) {
+/*function positionAnnotation(elem) {
     console.log("fired");
     console.log(`${elem.offsetLeft}, ${elem.offsetTop}`);
 }
@@ -46,6 +46,6 @@ hotspots.forEach((spot, index) => {
     anno.querySelector("img").src = `images/${delonixInfo[index].img}`;
 
     spot.appendChild(anno);
-})
+})*/
 
 })();
