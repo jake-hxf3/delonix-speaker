@@ -79,6 +79,7 @@ gsap.to(frames, {
 
 function render() {
     console.log(frames.frame);
+    ctx.drawImage(images[frames.frame], 0, 0);
 }
 
 
