@@ -1,12 +1,27 @@
 (() => {
 console.log("JS file connected");
 
+// Burger Menu
 const burgerBtn = document.querySelector("#burger-btn");
 
+// Model Viewer
 const viewer = document.querySelector("model-viewer");
 const viewerCon = document.querySelector("#viewer-con");
 const hotspots = document.querySelectorAll(".Hotspot");
 
+// Canvas
+const canvas = document.querySelector("#explode-view");
+const ctx = canvas.getContext("2d");
+
+const frameCount = 375;
+let images = []; // store images of the exploded animation frames and their sources
+
+const frames = {
+    frame: 0
+}; // store the current frame to be altered by the greensock plugin and then rendered
+
+
+// Hotspot Annotations
 const temp = document.querySelector("#annotation-template");
 
 const delonixInfo = [
