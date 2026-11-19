@@ -8,16 +8,31 @@ header {
         order: -1;
         
         nav ul {
-            @include A.horizontal-list;
+            @extend %horizontal-list;
         }
 
         .logo {
             height: 50px;
         }
     }
+}
 
+.burger {
+    @extend %bare-button;
+    @extend %div-image;
+    background-image: url(../images/burger_icon.svg);
+    filter: invert(100%);
+    transition: 0.5s linear transform;
+
+    .clicked {
+        transform: rotate(90deg);
+
+        +nav {
+            visibility: visible;
+        }
+    }
 }
 
 nav ul {
-    @include A.reset-list;
+    @extend %reset-list;
 }

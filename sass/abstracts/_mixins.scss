@@ -1,11 +1,11 @@
-@mixin reset-list {
+%reset-list {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-@mixin horizontal-list {
-  @include reset-list;
+%horizontal-list {
+  @extend %reset-list;
 
   display: flex;
   flex-direction: row;
@@ -21,4 +21,10 @@
     min-width: 10px;
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+%bare-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
