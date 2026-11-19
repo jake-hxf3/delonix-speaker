@@ -4,6 +4,7 @@ console.log("JS file connected");
 const viewer = document.querySelector("model-viewer");
 const hotspots = document.querySelectorAll(".Hotspot");
 const lb = document.querySelector("#lightbox");
+const lbCon = document.querySelector("#lightbox-con");
 
 const temp = document.querySelector("#annotation-template");
 
@@ -38,11 +39,11 @@ function lightbox() {
     console.log("lightbox triggered");
     if ((!annoElem) || (!spotElem)) return;
     if (window.innerWidth < 768) {
-        lb.appendChild(annoElem);
-        lb.classList.remove("hidden");
-        annoElem.classList.add("col-span-full");
+        //lb.appendChild(annoElem);
+        lbCon.classList.remove("hidden");
+        //annoElem.classList.add("col-span-full");
     } else {
-        spotElem.appendChild(annoElem);
+        //spotElem.appendChild(annoElem);
     }
 }
 

@@ -1,9 +1,12 @@
-#lightbox {
+#lightbox-con {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100vw;
-    height: 100vh;
-    z-index: 10;
+    min-height: 100vh;
+    z-index: 30;
+    color: white;
+    background-color: #ff0000;
 }
 
 #lightbox .HotspotAnnotation {
