@@ -48,6 +48,18 @@ const delonixInfo = [
     },
 ];
 
+
+// Canvas Animation
+// populate the image array
+for(let i = 0; i < frameCount; i++) {
+    const img = new Image();
+    img.src = `images/exploded/exploded_${(i + 1).toString().padStart(5, '0')}.webp`;
+    console.log(img.src);
+    //images.push(img);
+};
+
+
+// Functions
 function toggleMobileMenu() {
     burgerBtn.classList.toggle("clicked");
     burgerHidden = !burgerHidden;
