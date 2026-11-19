@@ -1,0 +1,7 @@
+@use '../abstracts' as A;
+
+.logo {
+    @extend %div-image;
+    cursor: pointer;
+    background-image: url(../images/fsd-logoW.svg); 
+}

@@ -1,0 +1,23 @@
+@use '../abstracts' as A;
+
+header {
+    display: flex;
+    flex-direction: column;
+
+    #main-header {
+        order: -1;
+        
+        nav ul {
+            @include A.horizontal-list;
+        }
+
+        .logo {
+            height: 50px;
+        }
+    }
+
+}
+
+nav ul {
+    @include A.reset-list;
+}
