@@ -14,15 +14,9 @@
     background-image: url(../images/burger_icon.svg);
     //background-color: aqua;
     filter: invert(100%);
-    transition: 0.5s linear transform;
+    @include A.fof-transition(0.25s, 0s, transform);
 
-    .clicked {
+    &.clicked {
         transform: rotate(90deg);
-
-        +nav {
-            visibility: visible;
-            opacity: 1;
-            max-height: 100vh;
-        }
     }
 }

@@ -7,6 +7,16 @@
     width: $width;
 }
 
+@mixin show($state: true) {
+    @if $state {
+        opacity: 1;
+        max-height: 100vh;        
+    } @else {
+        opacity: 0;
+        max-height: 0;         
+    }
+}
+
 %reset-list {
   margin: 0;
   padding: 0;

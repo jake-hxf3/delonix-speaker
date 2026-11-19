@@ -1,6 +1,8 @@
 (() => {
 console.log("JS file connected");
 
+const burgerBtn = document.querySelector("#burger-btn");
+
 const viewer = document.querySelector("model-viewer");
 const viewerCon = document.querySelector("#viewer-con");
 const hotspots = document.querySelectorAll(".Hotspot");
@@ -30,6 +32,9 @@ const delonixInfo = [
     },
 ];
 
+function toggleMobileMenu() {
+    burgerBtn.classList.toggle("clicked");
+}
 
 
 /*function positionAnnotation(elem) {
@@ -47,5 +52,7 @@ hotspots.forEach((spot, index) => {
 
     spot.appendChild(anno);
 })*/
+
+burgerBtn.addEventListener("click", toggleMobileMenu);
 
 })();
