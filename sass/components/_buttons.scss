@@ -1,0 +1,28 @@
+@use '../abstracts' as A;
+
+%bare-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.burger {
+    @extend %bare-button;
+    @extend %div-image;
+    @include A.square(3rem);
+    aspect-ratio: 1/1;
+    background-image: url(../images/burger_icon.svg);
+    //background-color: aqua;
+    filter: invert(100%);
+    transition: 0.5s linear transform;
+
+    .clicked {
+        transform: rotate(90deg);
+
+        +nav {
+            visibility: visible;
+            opacity: 1;
+            max-height: 100vh;
+        }
+    }
+}

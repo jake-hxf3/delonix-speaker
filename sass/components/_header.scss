@@ -3,12 +3,22 @@
 header {
     display: flex;
     flex-direction: column;
-
+}
     #main-header {
+        position: fixed;
+        inset: 0;
+        height: fit-content;
+        padding: min(2vw, 3vh) 2vw;
         order: -1;
         align-items: center;
         background-color: #000;
         color: #fff;
+
+        nav {
+            visibility: hidden;
+            opacity: 0;
+            max-height: 0;
+        }
         
         nav ul {
             @extend %horizontal-list;
@@ -20,6 +30,7 @@ header {
 
         #nav-links {
             text-transform: uppercase;
+            font-size: 1.25rem;
 
             li {
                 margin-inline: 1rem;
@@ -27,7 +38,7 @@ header {
         }
 
         #nav-icons {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             justify-content: end;
 
             li {
@@ -36,32 +47,34 @@ header {
         }
 
         .logo {
-            height: 50px;
+            background-position: left center;
+            margin-top: 0.5rem;
+            height: 4.5rem;
+            max-height: 40px;
+        }
+
+        #burger-btn {
+            justify-self: end;
         }
     }
-}
 
-.burger {
-    @extend %bare-button;
-    @extend %div-image;
-    background-image: url(../images/burger_icon.svg);
-    filter: invert(100%);
-    transition: 0.5s linear transform;
-
-    .clicked {
-        transform: rotate(90deg);
-
-        +nav {
-            visibility: visible;
-        }
+    #hero {
+        height: 100vh;
     }
-}
 
 nav ul {
     @extend %reset-list;
 }
 
 @media screen and (min-width: 768px) {
+    #main-header{ 
+        nav {
+            visibility: visible;
+            opacity: 1;
+            max-height: unset;
+        }
+    }
+
     #burger-btn {
         display: none;
     }

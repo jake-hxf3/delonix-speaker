@@ -1,9 +1,23 @@
 @use '../abstracts' as A;
 
 :root {
-    font-size: clamp(8px, calc(1px + 1.1vw), 126px);
+    font-size: 12px;
 }
 
 body {
     font-family: A.$main-font;
+}
+
+@media screen and (min-width: 768px) {
+    :root {
+        font-size: calc(1px + 1.25vw);        
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+    :root {
+        font-size: min(calc(1px + 1.1vw), 126px);        
+    }
+
 }

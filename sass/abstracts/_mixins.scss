@@ -2,6 +2,11 @@
     transition: $time $delay $property cubic-bezier(.7,.68,.22,1.0);;
 }
 
+@mixin square($width) {
+    aspect-ratio: 1/1 !important;
+    width: $width;
+}
+
 %reset-list {
   margin: 0;
   padding: 0;
@@ -26,12 +31,7 @@
 %div-image {
     min-height: 10px;
     min-width: 10px;
+    background-position: center center;
     background-size: contain;
     background-repeat: no-repeat;
-}
-
-%bare-button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
 }
