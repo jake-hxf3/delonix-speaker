@@ -15,13 +15,18 @@ const hotspots = document.querySelectorAll(".Hotspot");
 
 // Canvas
 const canvas = document.querySelector("#explode-view");
+const canvasCon = document.querySelector("#canvas-con");
 const ctx = canvas.getContext("2d");
 
 const frameCount = 374;
 let images = []; // store images of the exploded animation frames and their sources
 
 const frames = {
-    frame: 0
+    z: 0,
+    x: 0,
+    y: 0,
+    w: 1280,
+    h: 720,
 }; // store the current frame to be altered by the greensock plugin and then rendered
 
 
@@ -54,8 +59,13 @@ const delonixInfo = [
 
 // Canvas Animation
 // populate the image array
-canvas.width = 1280;
-canvas.height = 720;
+
+function resizeCanvas() {
+    canvas.width = Math.max(1280, window.innerWidth);
+    canvas.height = canvas.width*0.5625;    
+}
+
+resizeCanvas();
 
 for(let i = 0; i < frameCount; i++) {
     const img = new Image();
@@ -64,9 +74,9 @@ for(let i = 0; i < frameCount; i++) {
 };
 
 gsap.to(frames, {
-    frame: frameCount - 1,
+    z: frameCount - 1,
     ease: "none",
-    snap: "frame",
+    snap: "z",
     scrollTrigger: {
         trigger: "#explode-view",
         pin: true,
@@ -77,8 +87,9 @@ gsap.to(frames, {
 });
 
 function render() {
-    console.log(frames.frame);
-    ctx.drawImage(images[frames.frame], 0, 0);
+    frames.x = Math.min(0.5*window.innerWidth - 640, 0);
+    console.log(frames.z);
+    ctx.drawImage(images[frames.z], frames.x, -50, canvas.width, canvas.height);
 }
 
 
@@ -106,6 +117,10 @@ hotspots.forEach((spot, index) => {
     spot.appendChild(anno);
 })*/
 
+window.addEventListener("resize", () =>  {
+    resizeCanvas();
+    render();
+});
 burgerBtn.addEventListener("click", toggleMobileMenu);
 
 })();
