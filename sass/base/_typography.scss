@@ -1,9 +1,31 @@
 @use '../abstracts' as A;
+@use 'sass:color';
 
 :root {
-    font-size: clamp(12px, 2vw, 16px);
+    font-size: 12px;
 }
 
 body {
     font-family: A.$main-font;
+}
+
+h2 {
+    text-align: left;
+    margin-block: 2.5rem;
+    color: color.scale(A.$red, $lightness: 30%);
+    z-index: 5;
+}
+
+@media screen and (min-width: 768px) {
+    :root {
+        font-size: calc(1px + 1.25vw);        
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+    :root {
+        font-size: min(calc(1px + 1vw), 126px);        
+    }
+
 }

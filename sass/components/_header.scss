@@ -1,0 +1,103 @@
+@use '../abstracts' as A;
+
+header {
+    display: flex;
+    flex-direction: column-reverse;
+}
+    #main-header {
+        position: sticky;
+        z-index: 10;
+        inset: 0;
+        height: fit-content;
+        padding: 1dvh 2vw;
+        align-items: center;
+        background-color: #000;
+        overflow: hidden;
+        color: #fff;
+
+        nav {
+            @include A.show(false);
+        }
+        
+        nav ul {
+            @extend %horizontal-list;
+
+            li a:hover {
+                color: A.$grad-red;
+            }
+        }
+
+        #nav-links {
+            text-transform: uppercase;
+            font-size: 1rem;
+            font-weight: 500;
+
+            li {
+                margin-inline: 1.55rem;
+            }
+        }
+
+        #nav-icons {
+            font-size: 1.75rem;
+            justify-content: end;
+
+            li {
+                margin-inline: 0.5rem;
+            }            
+        }
+
+        .logo {
+            background-position: left center;
+            margin-top: 0.5rem;
+            height: 3.5rem;
+            max-height: 40px;
+        }
+    }
+
+nav ul {
+    @extend %reset-list;
+}
+
+@media screen and (max-width: 768px) {
+    #burger-btn {
+        justify-self: end;
+
+        &.clicked + nav {
+            @include A.show(true);
+            margin-top: 3rem;
+            border-top: 2px solid #fff;
+
+            #nav-links {
+                margin-top: 1rem;
+                flex-direction: column;
+                align-items: start;
+                padding-bottom: 5dvh;
+
+                li:not(:last-child) {
+                    margin-bottom: 1.5rem;
+                }
+            }
+
+            #nav-icons {
+                margin-top: 2rem;
+                order: -1;
+            }
+        }
+    }    
+}
+
+@media screen and (min-width: 768px) {
+    #main-header {
+        .logo {
+            max-height: unset;
+        }
+
+        nav {
+            @include A.show(true);
+        }
+    }
+
+    #burger-btn {
+        display: none;
+    }
+}

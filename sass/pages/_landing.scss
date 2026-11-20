@@ -1,12 +1,62 @@
-@use 'sass:color';
 @use '../abstracts' as A;
 
 body {
     background-color: black;
 }
 
-h1 {
-    text-align: center;
-    margin-block: 30px;
-    color: color.scale(A.$red, $lightness: 30%);
+#hero {
+    position: relative;
+    overflow: hidden;
+    height: 90dvh;
+    padding: 2% 7%;
+    @extend %true-bg;
+    background-image: url(../images/hero-promo2.jpg);
+
+}
+
+#hero::before {
+    content: "";
+    position: absolute;
+    inset: 0 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(#1201bc10, #1201bc30 40%, #210300e2 97%);
+    background-blend-mode: multiply;    
+}
+
+#hero > section {
+    height: 100%;
+}
+
+#intro-text {
+    z-index: 2;
+    align-self: end;
+
+    img {
+        width: 100%;
+        filter: drop-shadow(4px 4px 4px #00000083);
+    }
+}
+
+main {
+    z-index: 5;
+}
+
+@media screen and (min-width: 768px) {
+    #hero {
+        padding: 2% 5%;
+    }
+}
+
+@media screen and (min-aspect-ratio: 3/1) {
+    #hero {
+        height: unset;
+        aspect-ratio: 16/9;
+    }
+}
+
+@media screen and (max-aspect-ratio: 1/3) {
+    #hero > section {
+        height: 20%;
+    }
 }

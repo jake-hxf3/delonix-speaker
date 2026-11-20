@@ -1,0 +1,52 @@
+@mixin fof-transition($time, $delay, $property) {
+    transition: $time $delay $property cubic-bezier(.7,.68,.22,1.0);;
+}
+
+@mixin square($width) {
+    aspect-ratio: 1/1 !important;
+    width: $width;
+}
+
+@mixin show($state: true) {
+    @if $state {
+        opacity: 1;
+        max-height: 100vh;        
+    } @else {
+        opacity: 0;
+        max-height: 0;         
+    }
+}
+
+%reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+%horizontal-list {
+  @extend %reset-list;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    @include fof-transition(0.25s, 0s, all);
+  }
+}
+
+%true-bg {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+%div-image {
+    @extend %true-bg;
+    min-height: 33px;
+    min-width: 33px;
+    background-size: contain;
+}
