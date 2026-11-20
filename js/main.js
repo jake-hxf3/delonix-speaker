@@ -61,8 +61,8 @@ const delonixInfo = [
 // populate the image array
 
 function resizeCanvas() {
-    canvas.width = Math.max(1280, window.innerWidth);
-    canvas.height = canvas.width*0.5625;    
+    canvas.width = Math.max(1280,window.innerWidth);
+    canvas.height = window.innerHeight;    
 }
 
 resizeCanvas();
@@ -87,9 +87,12 @@ gsap.to(frames, {
 });
 
 function render() {
-    frames.x = Math.min(0.5*window.innerWidth - 640, 0);
+    frames.w - 1280;
+    frames.h = 720;
+    frames.x = 0.5*(window.innerWidth - frames.w);
+    frames.y = 0.5*(window.innerHeight- frames.h);
     console.log(frames.z);
-    ctx.drawImage(images[frames.z], frames.x, -50, canvas.width, canvas.height);
+    ctx.drawImage(images[frames.z], frames.x, frames.y, frames.w, frames.h);
 }
 
 
