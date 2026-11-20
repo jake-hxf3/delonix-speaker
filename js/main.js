@@ -1,9 +1,6 @@
 (() => {
 console.log("JS file connected");
 
-gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(ScrollToPlugin);
-
 // Burger Menu
 const burgerBtn = document.querySelector("#burger-btn");
 let burgerHidden = true;
@@ -12,22 +9,6 @@ let burgerHidden = true;
 const viewer = document.querySelector("model-viewer");
 const viewerCon = document.querySelector("#viewer-con");
 const hotspots = document.querySelectorAll(".Hotspot");
-
-// Canvas
-const canvas = document.querySelector("#explode-view");
-const canvasCon = document.querySelector("#canvas-con");
-const ctx = canvas.getContext("2d");
-
-const frameCount = 374;
-let images = []; // store images of the exploded animation frames and their sources
-
-const frames = {
-    z: 0,
-    x: 0,
-    y: 0,
-    w: 1280,
-    h: 720,
-}; // store the current frame to be altered by the greensock plugin and then rendered
 
 
 // Hotspot Annotations
@@ -57,45 +38,6 @@ const delonixInfo = [
 ];
 
 
-// Canvas Animation
-// populate the image array
-
-function resizeCanvas() {
-    canvas.width = Math.max(1280,window.innerWidth);
-    canvas.height = window.innerHeight;    
-}
-
-resizeCanvas();
-
-for(let i = 0; i < frameCount; i++) {
-    const img = new Image();
-    img.src = `images/exploded/exploded_${(i + 1).toString().padStart(5, '0')}.webp`;
-    images.push(img);
-};
-
-gsap.to(frames, {
-    z: frameCount - 1,
-    ease: "none",
-    snap: "z",
-    scrollTrigger: {
-        trigger: "#explode-view",
-        pin: true,
-        start: "top top",
-        scrub: 1
-    },
-    onUpdate: render
-});
-
-function render() {
-    frames.w - 1280;
-    frames.h = 720;
-    frames.x = 0.5*(window.innerWidth - frames.w);
-    frames.y = 0.5*(window.innerHeight- frames.h);
-    console.log(frames.z);
-    ctx.drawImage(images[frames.z], frames.x, frames.y, frames.w, frames.h);
-}
-
-
 // Functions
 function toggleMobileMenu() {
     burgerBtn.classList.toggle("clicked");
@@ -120,10 +62,71 @@ hotspots.forEach((spot, index) => {
     spot.appendChild(anno);
 })*/
 
-window.addEventListener("resize", () =>  {
-    resizeCanvas();
-    render();
-});
 burgerBtn.addEventListener("click", toggleMobileMenu);
+})();
 
+
+// GreenSock Animations
+(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollToPlugin);
+
+    // Canvas
+    const canvas = document.querySelector("#explode-view");
+    const canvasCon = document.querySelector("#canvas-con");
+    const ctx = canvas.getContext("2d");
+
+    const frameCount = 374;
+    let images = []; // store images of the exploded animation frames and their sources
+
+    const frames = {
+        z: 0,
+        x: 0,
+        y: 0,
+        w: 1280,
+        h: 720,
+    }; // store the current frame to be altered by the greensock plugin and then rendered
+
+    // Canvas Animation
+    // populate the image array
+
+    function resizeCanvas() {
+        canvas.width = Math.max(1280,window.innerWidth);
+        canvas.height = window.innerHeight;    
+    }
+
+    resizeCanvas();
+
+    for(let i = 0; i < frameCount; i++) {
+        const img = new Image();
+        img.src = `images/exploded/exploded_${(i + 1).toString().padStart(5, '0')}.webp`;
+        images.push(img);
+    };
+
+
+    gsap.to(frames, {
+        z: frameCount - 1,
+        ease: "none",
+        snap: "z",
+        scrollTrigger: {
+            trigger: "#explode-view",
+            pin: true,
+            start: "top top",
+            scrub: 1
+        },
+        onUpdate: render
+    });
+
+    function render() {
+        frames.w - 1280;
+        frames.h = 720;
+        frames.x = 0.5*(window.innerWidth - frames.w);
+        frames.y = 0.5*(window.innerHeight- frames.h);
+        ctx.drawImage(images[frames.z], frames.x, frames.y, frames.w, frames.h);
+    }
+
+    window.addEventListener("resize", () =>  {
+        resizeCanvas();
+        render();
+    });
 })();
