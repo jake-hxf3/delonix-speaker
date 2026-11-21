@@ -5,11 +5,14 @@ console.log("JS file connected");
 const burgerBtn = document.querySelector("#burger-btn");
 let burgerHidden = true;
 
+//X-Ray View
+const xRaySlider = document.querySelector("#x-ray-slider");
+let xRayProgress = 0;
+
 // Model Viewer
 const viewer = document.querySelector("model-viewer");
 const viewerCon = document.querySelector("#viewer-con");
 const hotspots = document.querySelectorAll(".Hotspot");
-
 
 // Hotspot Annotations
 const temp = document.querySelector("#annotation-template");
