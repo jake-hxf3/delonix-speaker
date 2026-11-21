@@ -116,8 +116,6 @@ body, p, h1, h2, h3, h4, h5 {
 
 /* ---Tablet Library Grid Styles--- */
 
-@media screen and (min-aspect-ratio: 1/2) {
-
    @media screen and (min-width: 768px) { 
       
       .grid-con { 
@@ -284,4 +282,3 @@ body, p, h1, h2, h3, h4, h5 {
       .xl-col-end-12	{grid-column-end: 12;}
       .xl-col-end-13	{grid-column-end: 13;}
    }
-}
