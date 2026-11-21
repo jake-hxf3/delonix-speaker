@@ -1,6 +1,6 @@
 @use '../abstracts' as A;
 :root {
-    --x-ray-progress: 40%;    
+    --x-ray-progress: 0%;    
 }
 
 #x-ray {
@@ -29,7 +29,7 @@
     position: relative;
     overflow: hidden;
     height: 100%;
-    box-shadow: 0.75rem 0.5rem 1.5rem #ff00005d;
+    box-shadow: 0.75rem 0 4.5rem #ff00005d;
 
     img {
         position: absolute;
@@ -40,7 +40,7 @@
 
         &:first-child {
             z-index: 6;
-            @include A.prefix-prop(mask-image, linear-gradient(#fff 0%, #fff var(--x-ray-progress), transparent calc(var(--x-ray-progress) + 6%)));
+            @include A.prefix-prop(mask-image, linear-gradient(#fff 0%, #fff calc(var(--x-ray-progress) - 6%), transparent var(--x-ray-progress)));
         }
     }
 }

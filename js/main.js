@@ -50,6 +50,7 @@ function toggleMobileMenu() {
 
 function setXRayProgress() {
     xRayProgress = 100 - xRaySlider.value;
+    console.log(xRayProgress);
     document.body.style.setProperty('--x-ray-progress', `${xRayProgress}%`);
 }
 
