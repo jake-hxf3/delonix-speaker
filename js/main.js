@@ -92,7 +92,7 @@ burgerBtn.addEventListener("click", toggleMobileMenu);
 
     function resizeCanvas() {
         canvas.width = Math.max(1280,window.innerWidth);
-        canvas.height = window.innerHeight;    
+        canvas.height = Math.max(720,window.innerHeight);    
     }
 
     resizeCanvas();
