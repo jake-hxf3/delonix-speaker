@@ -120,7 +120,7 @@ body, p, h1, h2, h3, h4, h5 {
    
    .grid-con { 
       grid-template-columns: repeat(12, minmax(0, 1fr));
-      grid-column-gap: 20px;
+      grid-column-gap: min(5vw, 20px);
    }
 
    .center-grid-con {
