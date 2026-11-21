@@ -10,7 +10,7 @@ body {
     height: 90dvh;
     @extend %true-bg;
     background-image: url(../images/hero-promo2.jpg);
-
+    background-color: #360000;
 }
 
 #hero::before {
@@ -30,6 +30,8 @@ body {
 #intro-text {
     z-index: 2;
     align-self: end;
+    container-type: inline-size;
+    container-name: intro-text;
 
     img {
         width: 100%;
@@ -63,6 +65,9 @@ main {
 
 
 @media screen and (min-width: 768px) {
+    #hero {
+        background-position-x: 10vw;
+    }
     .main-sect {
         &:has(.hrapper) {
             min-height: 56.25vmax;
@@ -84,4 +89,11 @@ main {
     .pad-sect {
         padding: 2% 5%;
     }
+}
+
+@media screen and (min-aspect-ratio: 4/5) {
+    #intro-text img {
+        width: unset;
+        height: 25dvh;
+    }    
 }
