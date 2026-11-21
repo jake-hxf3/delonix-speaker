@@ -25,7 +25,8 @@
 
 @media screen and (min-width: 768px) {
     #x-ray {
-        padding: 7vmax;
+        padding: 0;
+        align-self: end;
         order: 1;
     }
 }
