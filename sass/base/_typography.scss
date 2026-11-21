@@ -10,6 +10,12 @@ body {
     color: #fff;
 }
 
+%pretty-wrap {
+    --webkit-text-wrap: pretty;
+    --moz-text-wrap: pretty;
+    text-wrap: pretty;
+}
+
 h2 {
     text-align: left;
     font-size: 3rem;
@@ -17,9 +23,10 @@ h2 {
     font-weight: 550;
     color: color.scale(A.$red, $lightness: 30%);
     z-index: 5;
+    @extend %pretty-wrap;
 
     &+p {
-        margin-top: 1.5rem;
+        margin-top: 2rem;
     }
 }
 
@@ -27,7 +34,8 @@ p {
     font-size: 1rem;
     font-weight: 350;
     font-style: italic;
-    line-height: 1.5em;
+    line-height: 2em;
+    @extend %pretty-wrap;
 }
 
 @media screen and (min-width: 768px) {
