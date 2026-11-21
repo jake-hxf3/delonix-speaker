@@ -13,15 +13,21 @@ body {
 h2 {
     text-align: left;
     font-size: 3rem;
-    font-weight: 450;
-    margin-block: 2.5rem;
+    line-height: 1.1em;
+    font-weight: 550;
     color: color.scale(A.$red, $lightness: 30%);
     z-index: 5;
+
+    &+p {
+        margin-top: 1.5rem;
+    }
 }
 
 p {
-    font-size: 1.5rem;
+    font-size: 1rem;
+    font-weight: 350;
     font-style: italic;
+    line-height: 1.5em;
 }
 
 @media screen and (min-width: 768px) {
