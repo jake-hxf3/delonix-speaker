@@ -8,7 +8,6 @@ body {
     position: relative;
     overflow: hidden;
     height: 90dvh;
-    padding: 2% 7%;
     @extend %true-bg;
     background-image: url(../images/hero-promo2.jpg);
 
@@ -42,8 +41,13 @@ main {
     z-index: 5;
 }
 
+.pad-sect {
+    height: 100dvh;
+    padding: 2% 7%;
+}
+
 @media screen and (min-width: 768px) {
-    #hero {
+    .pad-sect {
         padding: 2% 5%;
     }
 }

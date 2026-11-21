@@ -7,13 +7,21 @@
 
 body {
     font-family: A.$main-font;
+    color: #fff;
 }
 
 h2 {
     text-align: left;
+    font-size: 3rem;
+    font-weight: 450;
     margin-block: 2.5rem;
     color: color.scale(A.$red, $lightness: 30%);
     z-index: 5;
+}
+
+p {
+    font-size: 1.5rem;
+    font-style: italic;
 }
 
 @media screen and (min-width: 768px) {
