@@ -120,8 +120,8 @@ burgerBtn.addEventListener("click", toggleMobileMenu);
     function render() {
         frames.w = 1280;
         frames.h = 720;
-        frames.x = 0.5*(canvas.width - frames.w);
-        frames.y = 0.5*(canvas.height - frames.h);
+        frames.x = 0.5*(window.innerWidth - frames.w);
+        frames.y = 0.5*(window.innerHeight - frames.h);
         ctx.drawImage(images[frames.z], frames.x, frames.y, frames.w, frames.h);
     }
 
