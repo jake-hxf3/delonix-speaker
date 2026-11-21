@@ -1,15 +1,6 @@
-#x-ray-con {
-    width: 100%;
-    height: max-content;
-    aspect-ratio: 16/9;
-    min-height: 100dvh;
-    background-color: rgb(255, 153, 0);
-}
-
 #x-ray {
-    background-color: black;
     height: min-content;
-    //padding: 20px 5vw;
+    margin-bottom: 4vh;
     order: -1;
     container-type: inline-size;
     container-name: x-ray-text;
@@ -28,13 +19,13 @@
 
 #x-ray-viewport {
     width: 100%;
-    min-height: 430px;
+    height: 100%;
     background-color: red;
 }
 
 @media screen and (min-width: 768px) {
     #x-ray {
-        padding: 0;
+        padding: 7vmax;
         order: 1;
     }
 }

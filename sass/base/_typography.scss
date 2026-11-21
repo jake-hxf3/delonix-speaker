@@ -19,8 +19,8 @@ body {
 h2 {
     text-align: left;
     font-size: 3rem;
-    line-height: 1.1em;
-    font-weight: 550;
+    line-height: 1em;
+    font-weight: 650;
     color: color.scale(A.$red, $lightness: 30%);
     z-index: 5;
     @extend %pretty-wrap;
@@ -32,8 +32,8 @@ h2 {
 
 p {
     font-size: 1rem;
-    font-weight: 350;
-    font-style: italic;
+    font-weight: 250;
+    //font-style: italic;
     line-height: 2em;
     @extend %pretty-wrap;
 }
