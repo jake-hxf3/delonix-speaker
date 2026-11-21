@@ -48,6 +48,13 @@ function toggleMobileMenu() {
     burgerBtn.ariaExpanded = burgerHidden;
 }
 
+function setXRayProgress() {
+    xRayProgress = 100 - xRaySlider.value;
+    document.body.style.setProperty('--x-ray-progress', `${xRayProgress}%`);
+}
+
+setXRayProgress();
+
 
 /*function positionAnnotation(elem) {
     console.log("fired");
@@ -66,6 +73,7 @@ hotspots.forEach((spot, index) => {
 })*/
 
 burgerBtn.addEventListener("click", toggleMobileMenu);
+xRaySlider.addEventListener("input", setXRayProgress);
 })();
 
 
