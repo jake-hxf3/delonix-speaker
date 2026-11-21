@@ -26,7 +26,7 @@ h2 {
     @extend %pretty-wrap;
 
     &+p {
-        margin-top: 2rem;
+        margin-top: 1.5rem;
     }
 }
 
@@ -34,7 +34,7 @@ p {
     font-size: 1rem;
     font-weight: 250;
     //font-style: italic;
-    line-height: 2em;
+    line-height: 1.5em;
     @extend %pretty-wrap;
 }
 

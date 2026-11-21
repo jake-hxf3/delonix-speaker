@@ -12,18 +12,39 @@
 
 @container x-ray-text {
     h2 {
-        font-size: calc(11.3cqw + 1px);
+        font-size: min(calc(11.3cqw + 1px), 36px);
     }
 
     p {
-        font-size: max(12px, calc(4.5cqw + 1px));
+        font-size: 12px;
     }
 }
 
-
 #x-ray-viewport {
     background-color: red;
-    height: 60dvh;
+    aspect-ratio: 4/5;
+}
+
+#x-ray-img-con {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+
+    img {
+        position: absolute;
+        top: 0;
+        left: -85%;
+        max-width: 1200px;
+        max-height: 100%;
+
+        &:first-child {
+            z-index: 6;
+        }
+    }
+}
+
+#x-ray-slider {
+    writing-mode: vertical-lr;
 }
 
 @media screen and (min-width: 768px) {
@@ -41,7 +62,15 @@
     }
 
     #x-ray-viewport {
-        height: unset;
+        aspect-ratio: unset;
     }
 
+    @container x-ray-text {
+        h2 {
+            font-size: calc(11.3cqw + 1px);
+        }
+        p {
+            font-size: max(12px, calc(4.5cqw + 1px));
+        }
+    }
 }

@@ -17,6 +17,11 @@
     }
 }
 
+%abs-position {
+    position: absolute;
+    inset: 0;
+}
+
 %reset-list {
   margin: 0;
   padding: 0;
