@@ -1,5 +1,6 @@
-#x-ray-con {
-    background-color: rgb(0, 34, 34);
+@use '../abstracts' as A;
+:root {
+    --x-ray-progress: 40%;    
 }
 
 #x-ray {
@@ -21,7 +22,6 @@
 }
 
 #x-ray-viewport {
-    background-color: red;
     aspect-ratio: 4/5;
 }
 
@@ -39,12 +39,16 @@
 
         &:first-child {
             z-index: 6;
+            @include A.prefix-prop(mask-image, linear-gradient(#fff 0%, #fff var(--x-ray-progress), transparent calc(var(--x-ray-progress) + 6%)));
         }
     }
 }
 
 #x-ray-slider {
     writing-mode: vertical-lr;
+    justify-self: start;
+    align-self: center;
+    height: 87%;
 }
 
 @media screen and (min-width: 768px) {

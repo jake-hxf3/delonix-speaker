@@ -11,9 +11,7 @@ body {
 }
 
 %pretty-wrap {
-    --webkit-text-wrap: pretty;
-    --moz-text-wrap: pretty;
-    text-wrap: pretty;
+    @include A.prefix-prop(text-wrap, pretty);
 }
 
 h2 {
