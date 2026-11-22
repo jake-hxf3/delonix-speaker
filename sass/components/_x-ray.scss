@@ -5,7 +5,7 @@
 }
 
 #x-ray-con {
-    margin-top: 5rem;
+    margin-top: 25rem;
 }
 
 #x-ray {
@@ -60,6 +60,10 @@
 }
 
 @media screen and (min-width: 768px) {
+    #x-ray-con .wrapper {
+        width: 125vh;
+        min-width: max-content;
+    }
     #x-ray {
         margin-left: 6%;
         margin-bottom: 0;

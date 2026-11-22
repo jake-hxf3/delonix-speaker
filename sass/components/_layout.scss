@@ -1,8 +1,7 @@
 .main-sect {
-    width: min-content;
+    width: 100%;
     height: min-content;
     min-height: 100dvh;
-    min-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,8 +22,7 @@
 @media screen and (min-width: 768px) {
     .main-sect .wrapper {
         height: 85dvh;
-        width: 105dvh;
-        min-width: max-content;
+        width: 100%;
         align-content: unset;
     }
 
