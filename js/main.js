@@ -13,6 +13,8 @@ const viewer = document.querySelector("model-viewer");
 const viewerCon = document.querySelector("#viewer-con");
 const hotspots = document.querySelectorAll(".Hotspot");
 
+const anno = document.querySelector("#annotation");
+
 // Hotspot Annotations
 const temp = document.querySelector("#annotation-template");
 
@@ -47,32 +49,49 @@ function toggleMobileMenu() {
     burgerBtn.ariaExpanded = burgerHidden;
 }
 
+
+let min = parseInt(xRaySlider.min);
+if(isNaN(min)) min = 0;
+let max = parseInt(xRaySlider.max);
+if(isNaN(max)) max = 100;
+
 function setXRayProgress() {
-    let xRayProgress = 100 - parseInt(xRaySlider.value);
-    let rangeProgress = (parseInt(xRaySlider.value) + 6)/106*100;
-    console.log(rangeProgress);
+    let val = parseInt(xRaySlider.value);
+    // Gradient Progress
+    let xRayProgress = 100 - val;
+    let rangeProgress = (val-min)/(max-min)*100;
+    let hueShift = rangeProgress*-1.25;
+    
+    console.log(xRayProgress);
     document.body.style.setProperty('--x-ray-progress', `${xRayProgress}%`);
-    document.body.style.setProperty('--range-progress', `${rangeProgress}%`);
+    document.body.style.setProperty('--x-ray-box-hue', `${hueShift}`);
+    xRaySlider.style.setProperty('--range-progress', `${rangeProgress}%`);
 }
 
 setXRayProgress();
 
 
-/*function positionAnnotation(elem) {
-    console.log("fired");
-    console.log(`${elem.offsetLeft}, ${elem.offsetTop}`);
-}
-
-hotspots.forEach((spot, index) => {
-    spot.addEventListener("click", positionAnnotation);
-
-    let anno = temp.content.cloneNode(true);
+function positionAnnotation(e) {
+    let index = e.currentTarget.index;
     anno.querySelector(".title").textContent = delonixInfo[index].title;
     anno.querySelector(".desc").textContent = delonixInfo[index].desc;
     anno.querySelector("img").src = `images/${delonixInfo[index].img}`;
+    anno.classList.remove("hide");
+    
+}
 
-    spot.appendChild(anno);
-})*/
+// disappears when hotspot not focused anymore
+function hideAnnotation() {
+    anno.classList.add("hide");
+}
+
+
+hotspots.forEach((spot, index) => {
+    spot.addEventListener("click", positionAnnotation);
+    spot.addEventListener("focusout", hideAnnotation);
+    spot.index = index;
+})
+
 
 burgerBtn.addEventListener("click", toggleMobileMenu);
 xRaySlider.addEventListener("input", setXRayProgress);
@@ -125,7 +144,7 @@ xRaySlider.addEventListener("input", setXRayProgress);
             trigger: "#explode-view",
             pin: true,
             start: "top top",
-            scrub: 1
+            scrub: 2,
         },
         onUpdate: render
     });

@@ -114,12 +114,6 @@ body, p, h1, h2, h3, h4, h5 {
 .col-end-4	{grid-column-end: 4;}
 .col-end-5	{grid-column-end: 5;}
 
-@media screen and (max-aspect-ratio: 2/5) {
-   body {
-      min-width: 50dvh;
-   }
-}
-
 /* ---Tablet Library Grid Styles--- */
 
    @media screen and (min-width: 768px) { 
@@ -175,12 +169,6 @@ body, p, h1, h2, h3, h4, h5 {
       .m-col-end-11	{grid-column-end: 11;}
       .m-col-end-12	{grid-column-end: 12;}
       .m-col-end-13	{grid-column-end: 13;}
-
-         @media screen and (max-aspect-ratio: 3/5) {
-            body {
-               min-width: 167dvh;
-            }
-         }
    }
 
    /* ---Desktop Library Grid Styles--- */

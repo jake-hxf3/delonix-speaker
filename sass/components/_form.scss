@@ -1,14 +1,10 @@
 @use '../abstracts' as A;
 @use 'sass:color';
 
-:root {
-    --range-progress: 10%;
-}
-
-$range-width: 1.05rem;
-$thumb-width: 2rem;
-$track-bg: #550000;
-$track-pbg: A.$grad-blue-1;
+$range-width: clamp(20px, 1vmax, 30px);
+$thumb-width: clamp(30px, 2vmax, 40px);
+$track-bg: A.$grad-blue-1;
+$track-pbg: #550000;
 
 @mixin track {
     box-sizing: border-box;
@@ -23,7 +19,7 @@ $track-pbg: A.$grad-blue-1;
     @include A.square($thumb-width);
     position: relative;
     background-color: A.$blue;
-    border: 0.25rem solid A.$red;
+    border: min(0.25rem, 10px) solid A.$red;
     border-radius: 0%;
     box-shadow: 0 14px 8px rgba(0, 0, 0, 0.3);
     transform: rotate(45deg);
@@ -37,6 +33,7 @@ $track-pbg: A.$grad-blue-1;
 
 
 input[type=range] {
+    --range-progress: 10%;
     -webkit-appearance: none;
     appearance: none;
     max-width: 100%;
@@ -58,14 +55,14 @@ input[type=range] {
 
     &::-webkit-slider-runnable-track {
         @include track;
-        background: linear-gradient(to top, $track-bg 0%, $track-bg var(--range-progress), $track-pbg var(--range-progress));
+        background: linear-gradient(to top, $track-pbg 0%, $track-pbg var(--range-progress), $track-bg var(--range-progress));
     }
 
     &::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
         @include thumb;   
-        right: 50%;
+        right: 20%;
     }
 
 
