@@ -22,7 +22,6 @@
 
 
 .HotspotAnnotation{
-  transition: all .5s ease-in-out;
   background: rgba(0, 0, 0, 0.107);
   box-shadow: 0 2px 4px rgba(255, 255, 255, 0.25);
   color: white;
@@ -43,13 +42,13 @@
   container-type: inline-size;
 
     &.hide {
-        animation: auto-hide 2s 1s linear forwards;
+        animation: auto-hide 2s linear forwards;
     }
 }
 
 @keyframes auto-hide {
-    0% {opacity: 1; visibility: visible;}
-    100% {opacity: 0; visibility: hidden;}
+    0% {opacity: 1; visibility: visible; max-height: 100vh;}
+    100% {opacity: 0; visibility: hidden; max-height: 0;}
 }
 
 
