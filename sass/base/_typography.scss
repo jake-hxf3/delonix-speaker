@@ -10,10 +10,6 @@ body {
     color: #fff;
 }
 
-%pretty-wrap {
-    @include A.prefix-prop(text-wrap, pretty);
-}
-
 h2 {
     text-align: left;
     font-size: 3rem;
@@ -21,7 +17,6 @@ h2 {
     font-weight: 650;
     color: color.scale(A.$red, $lightness: 30%);
     z-index: 5;
-    @extend %pretty-wrap;
 
     &+p {
         margin-top: 1.5rem;
@@ -33,7 +28,10 @@ p {
     font-weight: 250;
     //font-style: italic;
     line-height: 1.5em;
-    @extend %pretty-wrap;
+}
+
+.pretty-wrap {
+    @include A.prefix-prop(text-wrap, pretty);
 }
 
 @media screen and (min-width: 768px) {

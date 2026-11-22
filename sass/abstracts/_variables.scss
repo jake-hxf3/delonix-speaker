@@ -1,9 +1,12 @@
 @use 'fonts';
+@use 'sass:color';
 
 $red: #f30023;
 $blue: #4030f3;
 $black: #000003;
 $grad-red: #ff425e;
 $grad-blue-1:#343168;
-$grad-blue-2: #7a75bc;
+$grad-blue-1b: #7a75bc;
+$grad-red-2: color.scale($color: $red, $lightness: -70%);
+$grad-blue-2: color.scale($color: $blue, $lightness: -70%);
 $main-font: "Georama", Helvetica, sans-serif;

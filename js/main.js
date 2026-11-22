@@ -136,7 +136,7 @@ xRaySlider.addEventListener("input", setXRayProgress);
             trigger: "#explode-view",
             pin: true,
             start: "top top",
-            scrub: 1
+            scrub: 2,
         },
         onUpdate: render
     });

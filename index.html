@@ -56,6 +56,11 @@
                 <canvas id="explode-view" class="col-span-full"></canvas> 
             </section>
 
+            <div id="intro-con" class="main-sect pad-sect">
+                <div class="hrapper grid-con">
+                </div>
+            </div>
+
             <div id="x-ray-con" class="main-sect pad-sect">
                 <div class="hrapper grid-con">
                     <div id="x-ray-viewport" class="subgrid-con col-span-full m-col-start-1 m-col-end-7">
@@ -64,11 +69,11 @@
                             <img src="images/prismXray.png" draggable="false" alt="X-Ray view of the Delonix with visible components">
                         </div>
                         
-                        <input type="range" id="x-ray-slider" min="-6" max="100" value="-6">
+                        <input type="range" aria-labelledby="p-drag" id="x-ray-slider" min="-6" max="100" value="-6">
                     </div>
                     <section id="x-ray" class="col-span-full m-col-start-7 m-col-end-13">
-                        <h2>See what's inside the Delonix!</h2>
-                        <p>Drag the slider down and see the inner working behind the flames. At the heart of the Delonix is a double system of powerful, full-range sub-speakers producing up to 70 decibels. Tremble before the fiery screech of the Delonix.</p>
+                        <h2 class="pretty-wrap">See what's inside the Delonix!</h2>
+                        <p id="p-drag" class="pretty-wrap">Drag the slider down and see the inner working behind the flames. At the heart of the Delonix is a double system of powerful, full-range sub-speakers producing up to 70 decibels. Tremble before the fiery screech of the Delonix.</p>
                     </section>                    
                 </div>
             </div>

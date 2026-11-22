@@ -1,3 +1,5 @@
+@use 'variables' as V;
+
 @mixin prefix-prop($property, $value) {
     -#{webkit}-#{$property}: $value;
     -#{moz}-#{$property}: $value;
@@ -13,6 +15,10 @@
     aspect-ratio: 1/1 !important;
     width: $width;
     height: $width;
+}
+
+@mixin main-gradient($p1: 0%, $p2: $p1, $p3, $p4: $p3, $p5: 100%) {
+    background-image: linear-gradient(V.$grad-red-2 $p1, V.$grad-red-2 $p2, V.$grad-blue-2 $p3, V.$grad-blue-2 $p4, V.$black $p5);
 }
 
 @mixin show($state: true) {
