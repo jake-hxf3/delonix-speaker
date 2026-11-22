@@ -5,7 +5,8 @@
     --range-progress: 10%;
 }
 
-$range-width: 20%;
+$range-width: 1.05rem;
+$thumb-width: 2rem;
 $track-bg: #550000;
 $track-pbg: A.$grad-blue-1;
 
@@ -19,22 +20,26 @@ $track-pbg: A.$grad-blue-1;
 
 @mixin thumb {
     box-sizing: border-box;
-    @include A.square(1.75rem);
+    @include A.square($thumb-width);
+    position: relative;
     background-color: A.$blue;
     border: 0.25rem solid A.$red;
     border-radius: 0%;
     box-shadow: 0 14px 8px rgba(0, 0, 0, 0.3);
     transform: rotate(45deg);
-    transition: box-shadow 0.15s ease;
+    transition: all 0.15s ease;
+
+    &:hover {
+        background-color: color.scale($color: A.$blue, $lightness: -30%);
+        border-color: A.$grad-red;
+    }
 }
 
 
 input[type=range] {
     -webkit-appearance: none;
     appearance: none;
-    width: 100%;
     max-width: 100%;
-    margin: 0;
     background: transparent;
     cursor: pointer;
 
@@ -60,7 +65,7 @@ input[type=range] {
         -webkit-appearance: none;
         appearance: none;
         @include thumb;   
-        transform: translateX(-35%) rotate(45deg);
+        right: 50%;
     }
 
 
