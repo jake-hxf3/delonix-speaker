@@ -22,8 +22,6 @@
 
 
 .HotspotAnnotation{
-  background: rgba(0, 0, 0, 0.107);
-  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.25);
   color: white;
   display: grid;
   grid-template-columns: 5rem 1fr;
@@ -37,11 +35,14 @@
   padding: 2%;
   width: 100%;
   max-width: 510px;
-  
+
   container-name: hotspot-ann;
   container-type: inline-size;
 
-    
+    &:has(p) {
+        background: rgba(0, 0, 0, 0.107);
+        box-shadow: 0 2px 4px rgba(255, 255, 255, 0.25);
+    }
 
     &.hide {
         animation: auto-hide 2s linear forwards;
@@ -49,8 +50,8 @@
 }
 
 @keyframes auto-hide {
-    0% {opacity: 1; visibility: visible; max-height: 100vh;}
-    100% {opacity: 0; visibility: hidden; max-height: 0;}
+    0% {opacity: 1; visibility: visible;}
+    100% {opacity: 0; visibility: hidden;}
 }
 
 

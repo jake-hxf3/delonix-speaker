@@ -14,7 +14,11 @@ const xRaySlider = document.querySelector("#x-ray-slider");
 // Model Viewer
 const hotspots = document.querySelectorAll(".Hotspot");
 
-const anno = document.querySelector("#annotation");
+//const anno = document.querySelector("#annotation");
+let anno = null;
+
+const temp = document.querySelector("template");
+const annoCon = document.querySelector("#intro-ant");
 
 // Hotspot Annotations
 
@@ -82,7 +86,17 @@ function setXRayProgress() {
 setXRayProgress();
 
 
+
+function addAnnotation() {
+    anno = temp.content.cloneNode(true);
+    annoCon.appendChild(anno);
+    anno = annoCon.querySelector("#annotation");
+    console.log(anno);
+}
+
 function positionAnnotation(e) {
+    if(!anno) addAnnotation();
+
     let index = e.currentTarget.index;
     anno.querySelector(".title").textContent = delonixInfo[index].title;
     anno.querySelector(".desc").textContent = delonixInfo[index].desc;
@@ -176,7 +190,6 @@ xRaySlider.addEventListener("input", setXRayProgress);
     
 
     gsap.from(modelViewer, {
-        autoAlpha: 0,
         duration: 0.5,
         scale: 0,
         y: "5vh",
