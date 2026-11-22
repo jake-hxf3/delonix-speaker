@@ -28,7 +28,7 @@
 
 #x-ray-viewport {
     //aspect-ratio: 4/5;
-    height: 60dvh;
+    height: 63dvw;
     min-height: 288px;
 }
 
@@ -71,8 +71,7 @@
     }
 
     #x-ray-viewport {
-        height: 70dvh;
-        max-height: 74dvw;
+        height: 43dvw;
     }
 
     @container x-ray-text {
