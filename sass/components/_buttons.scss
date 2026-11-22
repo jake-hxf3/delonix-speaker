@@ -10,6 +10,7 @@
     display: block;
     padding: 1rem;
     width: fit-content;
+    height: min-content;
     @include A.fof-transition(0.25s, 0s, all);
 }
 
