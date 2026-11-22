@@ -1,7 +1,7 @@
 .main-sect {
     width: min-content;
     height: min-content;
-    min-height: max(100dvh, 75vw);
+    min-height: 100dvh;
     min-width: 100%;
     display: flex;
     justify-content: center;
@@ -10,8 +10,7 @@
 
     .wrapper {
         width: 100%;
-        min-height: 50dvw;
-        max-height: 100dvw;
+        min-height: max-content;
         align-items: start;
         align-content: end;
     }
@@ -21,16 +20,17 @@
     padding: 11% 7%;
 }
 
-/*@media screen and (min-aspect-ratio: 1/1) {
-    .main-sect{
-        .wrapper {
-            width: unset;
-            height: 90%;
-        }
+@media screen and (min-aspect-ratio: 5/1) {
+    .main-sect {
+       min-height: 75dvw;
     }
-} */
+}
 
 @media screen and (min-width: 768px) {
+    .main-sect .wrapper {
+        width: 115dvh;
+    }
+
     .pad-sect {
         padding: 2% 5%;
     }
