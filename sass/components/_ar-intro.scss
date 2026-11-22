@@ -54,6 +54,8 @@
   .overlay {
     position: absolute;
     pointer-events: none;
+    justify-self: center;
+    align-self: end;
     z-index: 6;
   }
 }

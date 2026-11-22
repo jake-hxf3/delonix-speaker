@@ -13,6 +13,8 @@ const viewer = document.querySelector("model-viewer");
 const viewerCon = document.querySelector("#viewer-con");
 const hotspots = document.querySelectorAll(".Hotspot");
 
+const anno = document.querySelector("#annotation");
+
 // Hotspot Annotations
 const temp = document.querySelector("#annotation-template");
 
@@ -69,21 +71,19 @@ function setXRayProgress() {
 setXRayProgress();
 
 
-/*function positionAnnotation(elem) {
-    console.log("fired");
-    console.log(`${elem.offsetLeft}, ${elem.offsetTop}`);
-}
-
-hotspots.forEach((spot, index) => {
-    spot.addEventListener("click", positionAnnotation);
-
-    let anno = temp.content.cloneNode(true);
+function positionAnnotation(e) {
+    let index = e.currentTarget.index;
     anno.querySelector(".title").textContent = delonixInfo[index].title;
     anno.querySelector(".desc").textContent = delonixInfo[index].desc;
     anno.querySelector("img").src = `images/${delonixInfo[index].img}`;
+}
 
-    spot.appendChild(anno);
-})*/
+
+hotspots.forEach((spot, index) => {
+    spot.addEventListener("click", positionAnnotation);
+    spot.index = index;
+})
+
 
 burgerBtn.addEventListener("click", toggleMobileMenu);
 xRaySlider.addEventListener("input", setXRayProgress);
