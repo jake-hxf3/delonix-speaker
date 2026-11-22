@@ -1,0 +1,77 @@
+@use '../abstracts' as A;
+@use 'sass:color';
+
+:root {
+    --range-progress: 10%;
+}
+
+$range-width: 20%;
+$track-bg: #550000;
+$track-pbg: A.$grad-blue-1;
+
+@mixin track {
+    box-sizing: border-box;
+    width: $range-width;
+    background: $track-bg;
+    border-radius: 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+@mixin thumb {
+    box-sizing: border-box;
+    @include A.square(1.75rem);
+    background-color: A.$blue;
+    border: 0.25rem solid A.$red;
+    border-radius: 0%;
+    box-shadow: 0 14px 8px rgba(0, 0, 0, 0.3);
+    transform: rotate(45deg);
+    transition: box-shadow 0.15s ease;
+}
+
+
+input[type=range] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    background: transparent;
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+
+/* Chrome, Edge, Safari */
+    &::-moz-range-track {
+        @include track;
+    }
+
+    &::-moz-range-thumb {
+        @include thumb;
+    }
+
+    &::-webkit-slider-runnable-track {
+        @include track;
+        background: linear-gradient(to top, $track-bg 0%, $track-bg var(--range-progress), $track-pbg var(--range-progress));
+    }
+
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        @include thumb;   
+        transform: translateX(-35%) rotate(45deg);
+    }
+
+
+    &::-moz-range-progress {
+        background: $track-pbg;
+        width: $range-width;
+    }
+
+        &:focus-visible{
+            &::-webkit-slider-thumb, &::-moz-range-thumb {
+                box-shadow: 0 4px 8px color.scale($color: A.$black, $alpha: 3%), 0 0 0 3px color.scale($color: A.$grad-blue-2, $alpha: 3%)
+        }
+    }
+}

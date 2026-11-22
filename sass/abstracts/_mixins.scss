@@ -1,3 +1,10 @@
+@mixin prefix-prop($property, $value) {
+    -#{webkit}-#{$property}: $value;
+    -#{moz}-#{$property}: $value;
+    -#{ms}-#{$property}: $value;
+  #{$property}: $value;
+}
+
 @mixin fof-transition($time, $delay, $property) {
     transition: $time $delay $property cubic-bezier(.7,.68,.22,1.0);;
 }
@@ -5,6 +12,7 @@
 @mixin square($width) {
     aspect-ratio: 1/1 !important;
     width: $width;
+    height: $width;
 }
 
 @mixin show($state: true) {
@@ -15,6 +23,11 @@
         opacity: 0;
         max-height: 0;         
     }
+}
+
+%abs-position {
+    position: absolute;
+    inset: 0;
 }
 
 %reset-list {

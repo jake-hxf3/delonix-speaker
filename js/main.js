@@ -5,11 +5,13 @@ console.log("JS file connected");
 const burgerBtn = document.querySelector("#burger-btn");
 let burgerHidden = true;
 
+//X-Ray View
+const xRaySlider = document.querySelector("#x-ray-slider");
+
 // Model Viewer
 const viewer = document.querySelector("model-viewer");
 const viewerCon = document.querySelector("#viewer-con");
 const hotspots = document.querySelectorAll(".Hotspot");
-
 
 // Hotspot Annotations
 const temp = document.querySelector("#annotation-template");
@@ -45,6 +47,16 @@ function toggleMobileMenu() {
     burgerBtn.ariaExpanded = burgerHidden;
 }
 
+function setXRayProgress() {
+    let xRayProgress = 100 - parseInt(xRaySlider.value);
+    let rangeProgress = (parseInt(xRaySlider.value) + 6)/106*100;
+    console.log(rangeProgress);
+    document.body.style.setProperty('--x-ray-progress', `${xRayProgress}%`);
+    document.body.style.setProperty('--range-progress', `${rangeProgress}%`);
+}
+
+setXRayProgress();
+
 
 /*function positionAnnotation(elem) {
     console.log("fired");
@@ -63,6 +75,7 @@ hotspots.forEach((spot, index) => {
 })*/
 
 burgerBtn.addEventListener("click", toggleMobileMenu);
+xRaySlider.addEventListener("input", setXRayProgress);
 })();
 
 
