@@ -1,6 +1,9 @@
 (() => {
 console.log("JS file connected");
 
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
+
 // Burger Menu
 const burgerBtn = document.querySelector("#burger-btn");
 let burgerHidden = true;
@@ -9,14 +12,11 @@ let burgerHidden = true;
 const xRaySlider = document.querySelector("#x-ray-slider");
 
 // Model Viewer
-const viewer = document.querySelector("model-viewer");
-const viewerCon = document.querySelector("#viewer-con");
 const hotspots = document.querySelectorAll(".Hotspot");
 
 const anno = document.querySelector("#annotation");
 
 // Hotspot Annotations
-const temp = document.querySelector("#annotation-template");
 
 const delonixInfo = [
     {
@@ -43,12 +43,23 @@ const delonixInfo = [
 
 
 // Functions
+function scrollToLink(id) {
+    if(!document.querySelector(`#${id}`)) return;
+    gsap.to(window, {
+        duration: 1, 
+        ease: "power3.out",
+        scrollTo: {
+            y: `#${id}`,
+            offsetY: 100
+        }
+    });
+}
+
 function toggleMobileMenu() {
     burgerBtn.classList.toggle("clicked");
     burgerHidden = !burgerHidden;
     burgerBtn.ariaExpanded = burgerHidden;
 }
-
 
 let min = parseInt(xRaySlider.min);
 if(isNaN(min)) min = 0;
@@ -76,8 +87,11 @@ function positionAnnotation(e) {
     anno.querySelector(".title").textContent = delonixInfo[index].title;
     anno.querySelector(".desc").textContent = delonixInfo[index].desc;
     anno.querySelector("img").src = `images/${delonixInfo[index].img}`;
+
     anno.classList.remove("hide");
-    
+
+    // scroll to the annotation
+    scrollToLink(anno.id);    
 }
 
 // disappears when hotspot not focused anymore
@@ -100,13 +114,12 @@ xRaySlider.addEventListener("input", setXRayProgress);
 
 // GreenSock Animations
 (() => {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.registerPlugin(ScrollToPlugin);
-
     // Canvas
     const canvas = document.querySelector("#explode-view");
     const canvasCon = document.querySelector("#canvas-con");
     const ctx = canvas.getContext("2d");
+
+    const modelViewer = document.querySelector("model-viewer");
 
     const frameCount = 374;
     let images = []; // store images of the exploded animation frames and their sources
@@ -118,6 +131,7 @@ xRaySlider.addEventListener("input", setXRayProgress);
         w: 1280,
         h: 720,
     }; // store the current frame to be altered by the greensock plugin and then rendered
+
 
     // Canvas Animation
     // populate the image array
@@ -156,6 +170,33 @@ xRaySlider.addEventListener("input", setXRayProgress);
         frames.y = 0.5*(window.innerHeight - frames.h);
         ctx.drawImage(images[frames.z], frames.x, frames.y, frames.w, frames.h);
     }
+
+
+    // Other Animations
+    
+
+    gsap.from(modelViewer, {
+        autoAlpha: 0,
+        duration: 0.5,
+        scale: 0,
+        y: "5vh",
+        ease: "power1.out",
+        scrollTrigger: {
+            trigger: "#rebirth",
+            start: "50% bottom",
+            end: "top top",
+            toggleActions: "play none none none",
+        },        
+    })
+
+
+    gsap.to(".Hotspot", {
+        rotation: 360,
+        duration: 2,
+        yoyo: true,
+        repeat: -1,
+        ease: "power1.out",
+    })
 
     window.addEventListener("resize", () =>  {
         resizeCanvas();

@@ -37,9 +37,11 @@
   padding: 2%;
   width: 100%;
   max-width: 510px;
-
+  
   container-name: hotspot-ann;
   container-type: inline-size;
+
+    
 
     &.hide {
         animation: auto-hide 2s linear forwards;
