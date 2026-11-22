@@ -40,8 +40,6 @@
 
     img {
         position: absolute;
-        left: -9999px;
-        right: -9999px;
         margin: auto;
         object-fit: cover;
         height: 100%;
@@ -73,9 +71,17 @@
         height: 100%;
     }
 
+    #x-ray-img-con img {
+        object-position: 47% 0%;
+    }
+
     @container x-ray-text {
         h2 {
             font-size: calc(11.3cqw + 1px);
+
+            &+p {
+                margin-top: 4cqh;
+            }
         }
         p {
             font-size: max(12px, calc(4.5cqw + 1px));

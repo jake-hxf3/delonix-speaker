@@ -6,7 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(0, 38, 38);
+    //background-color: rgb(0, 38, 38);
 
     .wrapper {
         width: 100%;
@@ -22,7 +22,7 @@
 
 @media screen and (min-width: 768px) {
     .main-sect .wrapper {
-        height: 80dvh;
+        height: 85dvh;
         width: 105dvh;
         min-width: max-content;
         align-content: unset;
