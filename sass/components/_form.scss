@@ -1,0 +1,70 @@
+@use '../abstracts' as A;
+:root {
+    --range-progress: 0;
+}
+
+@mixin track {
+    box-sizing: border-box;
+    width: 20%;
+    background: #ffffff;
+    border-radius: 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+@mixin thumb {
+    box-sizing: border-box;
+    @include A.square(1.75rem);
+    background: A.$blue;
+    border: 4px solid A.$red;
+    border-radius: 0%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+
+/* Chrome, Edge, Safari */
+    &::-moz-range-track {
+        @include track;
+    }
+
+    &::-moz-range-thumb {
+        @include thumb;
+    }
+
+    &::-webkit-slider-runnable-track {
+        @include track;
+        margin: 0 auto;
+
+    }
+
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        @include thumb;      
+    }
+
+
+    &::-moz-range-progress {
+        background: A.$grad-blue-1;
+        width: 20%;
+    }
+
+        &:focus-visible{
+            &::-webkit-slider-thumb, &::-moz-range-thumb {
+                box-shadow: 0 4px 8px color.scale($color: A.$black, $alpha: 0.3), 0 0 0 3px color.scale($color: A.$grad-blue-2, $alpha: 0.3)
+        }
+    }
+}

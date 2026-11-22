@@ -12,6 +12,7 @@
 @mixin square($width) {
     aspect-ratio: 1/1 !important;
     width: $width;
+    height: $width;
 }
 
 @mixin show($state: true) {
