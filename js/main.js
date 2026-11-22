@@ -76,11 +76,19 @@ function positionAnnotation(e) {
     anno.querySelector(".title").textContent = delonixInfo[index].title;
     anno.querySelector(".desc").textContent = delonixInfo[index].desc;
     anno.querySelector("img").src = `images/${delonixInfo[index].img}`;
+    anno.classList.remove("hide");
+    
+}
+
+// disappears when hotspot not focused anymore
+function hideAnnotation() {
+    anno.classList.add("hide");
 }
 
 
 hotspots.forEach((spot, index) => {
     spot.addEventListener("click", positionAnnotation);
+    spot.addEventListener("focusout", hideAnnotation);
     spot.index = index;
 })
 
