@@ -1,8 +1,8 @@
 @use '../abstracts' as A;
 @use 'sass:color';
 
-$range-width: max(1vw, 20px);
-$thumb-width: max(2vw, 30px);
+$range-width: clamp(20px, 1vmax, 30px);
+$thumb-width: clamp(30px, 2vmax, 40px);
 $track-bg: A.$grad-blue-1;
 $track-pbg: #550000;
 
@@ -19,7 +19,7 @@ $track-pbg: #550000;
     @include A.square($thumb-width);
     position: relative;
     background-color: A.$blue;
-    border: 0.25rem solid A.$red;
+    border: min(0.25rem, 10px) solid A.$red;
     border-radius: 0%;
     box-shadow: 0 14px 8px rgba(0, 0, 0, 0.3);
     transform: rotate(45deg);

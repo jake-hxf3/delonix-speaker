@@ -59,19 +59,18 @@
     justify-self: start;
     align-self: center;
     height: 87%;
-    margin: 0 auto;
 }
 
 @media screen and (min-width: 768px) {
     #x-ray {
         margin-left: 6%;
         margin-bottom: 0;
-        align-self: end;
+        align-self: center;
         order: 1;
     }
 
     #x-ray-viewport {
-        height: 33dvw;
+        height: 100%;
     }
 
     @container x-ray-text {
@@ -81,5 +80,9 @@
         p {
             font-size: max(12px, calc(4.5cqw + 1px));
         }
+    }
+
+    #x-ray-slider {
+        margin: 0 auto;
     }
 }

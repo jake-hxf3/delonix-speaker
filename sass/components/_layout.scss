@@ -20,15 +20,12 @@
     padding: 11% 7%;
 }
 
-@media screen and (min-aspect-ratio: 5/1) {
-    .main-sect {
-       min-height: 75dvw;
-    }
-}
-
 @media screen and (min-width: 768px) {
     .main-sect .wrapper {
-        width: 115dvh;
+        height: 80dvh;
+        width: 105dvh;
+        min-width: max-content;
+        align-content: unset;
     }
 
     .pad-sect {
