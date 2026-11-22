@@ -4,6 +4,10 @@
     --x-ray-box-hue: 0;  
 }
 
+#x-ray-con {
+    margin-top: 5rem;
+}
+
 #x-ray {
     height: min-content;
     margin-bottom: 6rem;
@@ -24,7 +28,7 @@
 
 #x-ray-viewport {
     aspect-ratio: 4/5;
-    max-height: 60dvh;
+    height: 60%;
 }
 
 #x-ray-img-con {
@@ -38,8 +42,8 @@
         left: -9999px;
         right: -9999px;
         margin: auto;
-        max-width: 1200px;
-        max-height: 100%;
+        object-fit: cover;
+        height: 100%;
 
         &:first-child {
             z-index: 6;
@@ -54,16 +58,10 @@
     justify-self: start;
     align-self: center;
     height: 87%;
-    margin-left: 1rem;
+    margin: 0 auto;
 }
 
 @media screen and (min-width: 768px) {
-    #x-ray-con .hrapper {
-        height: 75%;
-        //max-height: 60vw;
-        aspect-ratio: 3/2;
-    }
-
     #x-ray {
         margin-left: 6%;
         margin-bottom: 0;
@@ -72,7 +70,7 @@
     }
 
     #x-ray-viewport {
-        aspect-ratio: unset;
+        height: 80%;
         max-height: 70dvh;
     }
 

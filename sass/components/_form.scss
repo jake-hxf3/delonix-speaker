@@ -1,8 +1,8 @@
 @use '../abstracts' as A;
 @use 'sass:color';
 
-$range-width: 1.05rem;
-$thumb-width: 2rem;
+$range-width: max(1.5vw, 20px);
+$thumb-width: max(2.5vw, 30px);
 $track-bg: A.$grad-blue-1;
 $track-pbg: #550000;
 
@@ -62,7 +62,7 @@ input[type=range] {
         -webkit-appearance: none;
         appearance: none;
         @include thumb;   
-        right: 50%;
+        right: 20%;
     }
 
 
