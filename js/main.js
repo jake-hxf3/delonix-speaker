@@ -1,6 +1,9 @@
 (() => {
 console.log("JS file connected");
 
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
+
 // Burger Menu
 const burgerBtn = document.querySelector("#burger-btn");
 let burgerHidden = true;
@@ -9,14 +12,11 @@ let burgerHidden = true;
 const xRaySlider = document.querySelector("#x-ray-slider");
 
 // Model Viewer
-const viewer = document.querySelector("model-viewer");
-const viewerCon = document.querySelector("#viewer-con");
 const hotspots = document.querySelectorAll(".Hotspot");
 
 const anno = document.querySelector("#annotation");
 
 // Hotspot Annotations
-const temp = document.querySelector("#annotation-template");
 
 const delonixInfo = [
     {
@@ -76,7 +76,18 @@ function positionAnnotation(e) {
     anno.querySelector(".title").textContent = delonixInfo[index].title;
     anno.querySelector(".desc").textContent = delonixInfo[index].desc;
     anno.querySelector("img").src = `images/${delonixInfo[index].img}`;
+
     anno.classList.remove("hide");
+
+    // scroll to the annotation
+    gsap.to(window, {
+        duration: 1, 
+        ease: "power3.out",
+        scrollTo: {
+            y: `#annotation`,
+            offsetY: 100
+        }
+    });
     
 }
 
@@ -100,9 +111,6 @@ xRaySlider.addEventListener("input", setXRayProgress);
 
 // GreenSock Animations
 (() => {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.registerPlugin(ScrollToPlugin);
-
     // Canvas
     const canvas = document.querySelector("#explode-view");
     const canvasCon = document.querySelector("#canvas-con");

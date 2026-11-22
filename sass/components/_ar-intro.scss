@@ -112,6 +112,8 @@ model-viewer {
 
     @container inst {
       #inst {
+        order: 3;
+        margin-top: 8rem;
         font-size: 1.5rem;
         align-self: start;
       }
