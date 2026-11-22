@@ -6,6 +6,13 @@
     cursor: pointer;
 }
 
+%btn {
+    display: block;
+    padding: 1rem;
+    width: fit-content;
+    @include A.fof-transition(0.25s, 0s, all);
+}
+
 .burger {
     @extend %bare-button;
     @extend %div-image;
@@ -19,4 +26,15 @@
     &.clicked {
         transform: rotate(90deg);
     }
+}
+
+.btn-link {
+    @extend %btn;
+    cursor: pointer;
+    text-decoration: none;}
+
+#cta {
+    @include A.brand-color(#000, #FFA100, $hover-bg-color: #003edb);
+    font-weight: 650;
+    padding: 1rem 1.5rem;
 }

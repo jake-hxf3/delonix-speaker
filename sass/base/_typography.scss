@@ -10,7 +10,7 @@ body {
     color: #fff;
 }
 
-h2 {
+h2, %heading {
     text-align: left;
     font-size: 3rem;
     //font-size: 1.539rem
@@ -30,6 +30,11 @@ p {
     font-weight: 250;
     //font-style: italic;
     line-height: 1.5em;
+}
+
+em {
+    font-style: unset;
+    font-weight: 800;
 }
 
 .pretty-wrap {

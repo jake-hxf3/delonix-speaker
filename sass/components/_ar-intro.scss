@@ -1,8 +1,11 @@
 @use '../abstracts' as A;
+@use '../base/typography';
 
 #intro-con {
     @include A.main-gradient($p3: 87%);
     width: 100%;
+    min-height: max-content;
+
 
     .wrapper {
       width: 95dvw;
@@ -13,13 +16,38 @@
 
 #rebirth {
   width: 100%;
+  min-height: max-content;
   height: 100%;
   background-color: rgb(0, 86, 57);
 }
 
+#intro-info {
+  height: 100%;
+  align-content: center;
+
+  q {
+    @extend %heading;
+    font-weight: 750;
+    color: A.$red;
+
+    q::before, q::after {
+      content: "";
+    }
+  }
+
+  p {
+    width: 80%;
+  }
+}
+
+#cta {
+  margin-top: 4rem;
+}
+
+
 
 model-viewer {
-  width: 100%;
+  width: 30%;
   height: 100%;
   //background-image: linear-gradient(A.$grad-blue-1, A.$red, A.$grad-blue-2);
   margin: 0 auto;
