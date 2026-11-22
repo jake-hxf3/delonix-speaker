@@ -2,11 +2,12 @@
 @use 'sass:color';
 
 :root {
-    --range-progress: 0;
+    --range-progress: 10%;
 }
 
 $range-width: 20%;
 $track-bg: #550000;
+$track-pbg: A.$grad-blue-1;
 
 @mixin track {
     box-sizing: border-box;
@@ -23,7 +24,8 @@ $track-bg: #550000;
     border: 0.25rem solid A.$red;
     border-radius: 0%;
     box-shadow: 0 14px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    transform: rotate(45deg);
+    transition: box-shadow 0.15s ease;
 }
 
 
@@ -51,18 +53,19 @@ input[type=range] {
 
     &::-webkit-slider-runnable-track {
         @include track;
+        background: linear-gradient(to top, $track-bg 0%, $track-bg var(--range-progress), $track-pbg var(--range-progress));
     }
 
     &::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
         @include thumb;   
-        transform: translateX(-35%);
+        transform: translateX(-35%) rotate(45deg);
     }
 
 
     &::-moz-range-progress {
-        background: A.$grad-blue-1;
+        background: $track-pbg;
         width: $range-width;
     }
 

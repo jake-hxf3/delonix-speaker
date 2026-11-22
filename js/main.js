@@ -7,7 +7,6 @@ let burgerHidden = true;
 
 //X-Ray View
 const xRaySlider = document.querySelector("#x-ray-slider");
-let xRayProgress = 0;
 
 // Model Viewer
 const viewer = document.querySelector("model-viewer");
@@ -49,9 +48,11 @@ function toggleMobileMenu() {
 }
 
 function setXRayProgress() {
-    xRayProgress = 100 - xRaySlider.value;
-    console.log(xRayProgress);
+    let xRayProgress = 100 - parseInt(xRaySlider.value);
+    let rangeProgress = (parseInt(xRaySlider.value) + 6)/106*100;
+    console.log(rangeProgress);
     document.body.style.setProperty('--x-ray-progress', `${xRayProgress}%`);
+    document.body.style.setProperty('--range-progress', `${rangeProgress}%`);
 }
 
 setXRayProgress();
