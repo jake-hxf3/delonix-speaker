@@ -1,7 +1,7 @@
 # Delonix Bluetooth Speaker
-![insert alt text](images/example.jpg)
+![insert alt text](images/prismXray3.png)
 
-This webpage is a 3D demo of my latest creation - the FSD Delonix Bluetooth Speaker.
+This webpage is a 3D demo of my latest creation - the FSD Delonix Bluetooth Speaker. Featuring a hot-to-touch 3D model, together with scrubbing animation powered by GreenSock Animation.
 
 
 ## Installation
