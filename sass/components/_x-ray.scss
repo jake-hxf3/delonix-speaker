@@ -5,7 +5,7 @@
 
 #x-ray {
     height: min-content;
-    margin-bottom: 4vh;
+    margin-bottom: 6rem;
     order: -1;
     container-type: inline-size;
     container-name: x-ray-text;
@@ -23,6 +23,7 @@
 
 #x-ray-viewport {
     aspect-ratio: 4/5;
+    max-height: 60dvh;
 }
 
 #x-ray-img-con {
@@ -33,8 +34,9 @@
 
     img {
         position: absolute;
-        top: 0;
-        left: -85%;
+        left: -9999px;
+        right: -9999px;
+        margin: auto;
         max-width: 1200px;
         max-height: 100%;
 
@@ -51,6 +53,7 @@
     justify-self: start;
     align-self: center;
     height: 87%;
+    margin-left: 1rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -69,6 +72,7 @@
 
     #x-ray-viewport {
         aspect-ratio: unset;
+        max-height: 70dvh;
     }
 
     @container x-ray-text {
