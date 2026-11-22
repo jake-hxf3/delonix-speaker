@@ -25,20 +25,22 @@
   //opacity: 0;
   //visibility: hidden;
   //transition: all .5s ease-in-out;
-  background: rgba(0, 0, 0, 0.707);
+  background: rgba(0, 0, 0, 0.107);
   box-shadow: 0 2px 4px rgba(255, 255, 255, 0.25);
   color: white;
   display: grid;
-  grid-template-columns: 23.3% 1fr;
+  grid-template-columns: 5rem 1fr;
   align-items: center;
+  margin: 0 auto;
   gap: 1rem;
   font-family: 'Georama', Helvetica Neue, sans-serif;
   font-size: 1.15rem;
   font-weight: 700;
   overflow-wrap: break-word;
-  padding: 5% 15%;
-  //width: max-content;
+  padding: 2%;
   text-align: left;
+  width: 100%;
+  max-width: 510px;
 
   container-name: hotspot-ann;
   container-type: inline-size;
