@@ -43,12 +43,23 @@ const delonixInfo = [
 
 
 // Functions
+function scrollToLink(id) {
+    if(!document.querySelector(`#${id}`)) return;
+    gsap.to(window, {
+        duration: 1, 
+        ease: "power3.out",
+        scrollTo: {
+            y: `#${id}`,
+            offsetY: 100
+        }
+    });
+}
+
 function toggleMobileMenu() {
     burgerBtn.classList.toggle("clicked");
     burgerHidden = !burgerHidden;
     burgerBtn.ariaExpanded = burgerHidden;
 }
-
 
 let min = parseInt(xRaySlider.min);
 if(isNaN(min)) min = 0;
@@ -66,6 +77,8 @@ function setXRayProgress() {
     document.body.style.setProperty('--x-ray-progress', `${xRayProgress}%`);
     document.body.style.setProperty('--x-ray-box-hue', `${hueShift}`);
     xRaySlider.style.setProperty('--range-progress', `${rangeProgress}%`);
+
+    scrollToLink(xRaySlider.id);
 }
 
 setXRayProgress();
@@ -80,15 +93,7 @@ function positionAnnotation(e) {
     anno.classList.remove("hide");
 
     // scroll to the annotation
-    gsap.to(window, {
-        duration: 1, 
-        ease: "power3.out",
-        scrollTo: {
-            y: `#annotation`,
-            offsetY: 100
-        }
-    });
-    
+    scrollToLink(anno.id);    
 }
 
 // disappears when hotspot not focused anymore
