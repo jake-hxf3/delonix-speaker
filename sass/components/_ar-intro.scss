@@ -56,13 +56,6 @@
   }
 }
 
-#inst {
-  max-width: 50%;
-  padding: 1rem;
-  height: max-content;
-  background-color: #000;
-}
-
 
 model-viewer {
   width: 100%;
@@ -100,13 +93,6 @@ model-viewer {
       .overlay {
         position: static;
       }
-    }
-
-    #inst {
-      text-align: right;
-      visibility: visible;
-      max-width: unset;
-      height: max-content;
     }
 
 }

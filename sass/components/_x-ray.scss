@@ -16,16 +16,6 @@
     container-name: x-ray-text;
 }
 
-@container x-ray-text {
-    h2 {
-        font-size: min(calc(11.3cqw + 1px), 36px);
-    }
-
-    p {
-        font-size: 12px;
-    }
-}
-
 #x-ray-viewport {
     //aspect-ratio: 4/5;
     height: 63dvw;

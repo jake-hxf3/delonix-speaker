@@ -1,3 +1,6 @@
+@use '../abstracts' as A;
+@use '../base/typography';
+
 .Hotspot {
   background: url(../images/hotspot.svg) center no-repeat;
   border: 0;
@@ -22,7 +25,7 @@
   //opacity: 0;
   //visibility: hidden;
   //transition: all .5s ease-in-out;
-  background: rgba(0, 0, 0, 0.179);
+  background: rgba(0, 0, 0, 0.707);
   box-shadow: 0 2px 4px rgba(255, 255, 255, 0.25);
   color: white;
   display: grid;
@@ -33,31 +36,29 @@
   font-size: 1.15rem;
   font-weight: 700;
   overflow-wrap: break-word;
-  padding: 0.5rem 1rem;
+  padding: 5% 15%;
   //width: max-content;
   text-align: left;
 
   container-name: hotspot-ann;
   container-type: inline-size;
-
-  &.overlay {
-    width: 90%;
-    min-width: 200px;
-  }
 }
 
 
 
 @container hotspot-ann {
-  p {
-    font-size: 0.92rem;
+  p.desc {
+    //font-size: 4.67cqi;
+    font-size: 1.2rem;
     line-height: 1.5em;
     font-weight: 300;
     grid-area: 2/1/3/3;
   }
   
   p.title {
-    font-size: 1.3rem;
+    //font-size: 6.59cqi;
+    font-size: 2rem;
+    line-height: 1em;
     font-weight: 500;
     grid-area: 1/2/2/3;
   }
