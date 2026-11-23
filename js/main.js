@@ -6,7 +6,6 @@ gsap.registerPlugin(ScrollToPlugin);
 
 // Burger Menu
 const burgerBtn = document.querySelector("#burger-btn");
-let burgerExpanded = false;
 
 //X-Ray View
 const xRaySlider = document.querySelector("#x-ray-slider");
@@ -96,11 +95,18 @@ setXRayProgress();
 
 
 
+// Hotspot Animation & Transitions
+let hsRotate = {
+        scale: 0.65,
+        rotation: 180,
+        duration: 2,
+        ease: "power1.out",
+    };
+
 function addAnnotation() {
     anno = temp.content.cloneNode(true);
     annoCon.appendChild(anno);
     anno = annoCon.querySelector("#annotation");
-    console.log(anno);
 }
 
 function positionAnnotation(e) {
@@ -118,7 +124,9 @@ function positionAnnotation(e) {
     // scroll to the annotation
     scrollToLink(anno.id);    
 
+    // do things on the hotspot
     spot.ariaPressed = true;
+    gsap.from(spot,hsRotate);
 }
 
 // disappears when hotspot not focused anymore
@@ -126,22 +134,26 @@ function hideAnnotation(e) {
     let spot = e.currentTarget;
     anno.classList.add("hide");
     spot.ariaPressed = false;
+    gsap.to(spot,hsRotate);
+
 }
 
 
 hotspots.forEach((spot, index) => {
     spot.addEventListener("click", positionAnnotation);
     spot.addEventListener("focusout", hideAnnotation);
+    gsap.from(spot,hsRotate);
     spot.index = index;
 })
 
 
 burgerBtn.addEventListener("click", toggleMobileMenu);
 xRaySlider.addEventListener("input", setXRayProgress);
+
+
 })();
 
-
-// GreenSock Animations
+// Scroll Animations
 (() => {
     // Canvas
     const canvas = document.querySelector("#explode-view");
@@ -159,8 +171,6 @@ xRaySlider.addEventListener("input", setXRayProgress);
         w: 1280,
         h: 720,
     }; // store the current frame to be altered by the greensock plugin and then rendered
-
-    const hotspots = document.querySelectorAll(".Hotspot");
 
 
     // Canvas Animation
@@ -207,8 +217,10 @@ xRaySlider.addEventListener("input", setXRayProgress);
 
 
     // Other Animations
-    
-
+    //
+    //
+    //
+    //
     gsap.from(modelViewer, {
         duration: 0.5,
         scale: 0,
@@ -221,18 +233,6 @@ xRaySlider.addEventListener("input", setXRayProgress);
             toggleActions: "play none none none",
         },        
     })
-
-    let hsRotate = gsap.timeline({
-        paused: true,
-    });
-
-    hsRotate.to(hotspots, {
-        rotation: 360,
-        duration: 2,
-        ease: "power1.out",
-    })
-
-    //hotspots.addEventListener("click", hotspotAnim);
 
     window.addEventListener("resize", () =>  {
         resizeCanvas();
