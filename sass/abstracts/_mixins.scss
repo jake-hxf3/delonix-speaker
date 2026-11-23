@@ -9,7 +9,7 @@
 }
 
 @mixin fof-transition($time, $delay, $property) {
-    transition: $time $delay $property cubic-bezier(.7,.68,.22,1.0);;
+    transition: $time $delay $property V.$fof;
 }
 
 @mixin square($width) {

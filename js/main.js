@@ -6,7 +6,6 @@ gsap.registerPlugin(ScrollToPlugin);
 
 // Burger Menu
 const burgerBtn = document.querySelector("#burger-btn");
-let burgerHidden = true;
 
 //X-Ray View
 const xRaySlider = document.querySelector("#x-ray-slider");
@@ -14,7 +13,11 @@ const xRaySlider = document.querySelector("#x-ray-slider");
 // Model Viewer
 const hotspots = document.querySelectorAll(".Hotspot");
 
-const anno = document.querySelector("#annotation");
+//const anno = document.querySelector("#annotation");
+let anno = null;
+
+const temp = document.querySelector("template");
+const annoCon = document.querySelector("#intro-ant");
 
 // Hotspot Annotations
 
@@ -55,10 +58,19 @@ function scrollToLink(id) {
     });
 }
 
+// flips the boolean attribute and turns anything else to false
+function toggleAriaAttribute(target, aria) {
+    let toggle = target.getAttribute(aria);
+    if(!toggle) return false;
+    if(toggle.toLowerCase() === "false") toggle = true;
+    else toggle = false;
+    target.setAttribute(aria, toggle);
+    return toggle;
+}
+
 function toggleMobileMenu() {
     burgerBtn.classList.toggle("clicked");
-    burgerHidden = !burgerHidden;
-    burgerBtn.ariaExpanded = burgerHidden;
+    toggleAriaAttribute(burgerBtn, "aria-expanded");
 }
 
 let min = parseInt(xRaySlider.min);
@@ -82,8 +94,27 @@ function setXRayProgress() {
 setXRayProgress();
 
 
+
+// Hotspot Animation & Transitions
+let hsRotate = {
+        scale: 0.65,
+        rotation: 180,
+        duration: 2,
+        ease: "power1.out",
+    };
+
+function addAnnotation() {
+    anno = temp.content.cloneNode(true);
+    annoCon.appendChild(anno);
+    anno = annoCon.querySelector("#annotation");
+}
+
 function positionAnnotation(e) {
-    let index = e.currentTarget.index;
+    if(!anno) addAnnotation();
+
+    let spot = e.currentTarget;
+    let index = spot.index;
+    
     anno.querySelector(".title").textContent = delonixInfo[index].title;
     anno.querySelector(".desc").textContent = delonixInfo[index].desc;
     anno.querySelector("img").src = `images/${delonixInfo[index].img}`;
@@ -92,31 +123,40 @@ function positionAnnotation(e) {
 
     // scroll to the annotation
     scrollToLink(anno.id);    
+
+    // do things on the hotspot
+    spot.ariaPressed = true;
+    gsap.from(spot,hsRotate);
 }
 
 // disappears when hotspot not focused anymore
-function hideAnnotation() {
+function hideAnnotation(e) {
+    let spot = e.currentTarget;
     anno.classList.add("hide");
+    spot.ariaPressed = false;
+    gsap.to(spot,hsRotate);
+
 }
 
 
 hotspots.forEach((spot, index) => {
     spot.addEventListener("click", positionAnnotation);
     spot.addEventListener("focusout", hideAnnotation);
+    gsap.from(spot,hsRotate);
     spot.index = index;
 })
 
 
 burgerBtn.addEventListener("click", toggleMobileMenu);
 xRaySlider.addEventListener("input", setXRayProgress);
+
+
 })();
 
-
-// GreenSock Animations
+// Scroll Animations
 (() => {
     // Canvas
     const canvas = document.querySelector("#explode-view");
-    const canvasCon = document.querySelector("#canvas-con");
     const ctx = canvas.getContext("2d");
 
     const modelViewer = document.querySelector("model-viewer");
@@ -160,7 +200,10 @@ xRaySlider.addEventListener("input", setXRayProgress);
             start: "top top",
             scrub: 2,
         },
-        onUpdate: render
+        onUpdate: render,
+        onComplete: () => {
+            canvas.ariaBusy = false;
+        },
     });
 
     function render() {
@@ -169,14 +212,16 @@ xRaySlider.addEventListener("input", setXRayProgress);
         frames.x = 0.5*(window.innerWidth - frames.w);
         frames.y = 0.5*(window.innerHeight - frames.h);
         ctx.drawImage(images[frames.z], frames.x, frames.y, frames.w, frames.h);
+        canvas.ariaBusy = true;
     }
 
 
     // Other Animations
-    
-
+    //
+    //
+    //
+    //
     gsap.from(modelViewer, {
-        autoAlpha: 0,
         duration: 0.5,
         scale: 0,
         y: "5vh",
@@ -187,15 +232,6 @@ xRaySlider.addEventListener("input", setXRayProgress);
             end: "top top",
             toggleActions: "play none none none",
         },        
-    })
-
-
-    gsap.to(".Hotspot", {
-        rotation: 360,
-        duration: 2,
-        yoyo: true,
-        repeat: -1,
-        ease: "power1.out",
     })
 
     window.addEventListener("resize", () =>  {

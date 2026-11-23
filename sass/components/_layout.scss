@@ -19,9 +19,11 @@
     padding: 11% 7%;
 }
 
+
 @media screen and (min-width: 768px) {
     .main-sect .wrapper {
         height: 85dvh;
+        max-height: 55dvw;
         width: 100%;
         align-content: unset;
     }

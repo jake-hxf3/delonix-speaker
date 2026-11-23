@@ -9,4 +9,5 @@ $grad-blue-1:#343168;
 $grad-blue-1b: #7a75bc;
 $grad-red-2: color.scale($color: $red, $lightness: -70%);
 $grad-blue-2: color.scale($color: $blue, $lightness: -70%);
+$fof: cubic-bezier(.7,.68,.22,1.0);
 $main-font: "Georama", Helvetica, sans-serif;
