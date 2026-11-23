@@ -202,7 +202,7 @@ xRaySlider.addEventListener("input", setXRayProgress);
         },        
     })
 
-
+    
     gsap.to(".Hotspot", {
         rotation: 360,
         duration: 2,
