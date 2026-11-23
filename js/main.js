@@ -6,7 +6,7 @@ gsap.registerPlugin(ScrollToPlugin);
 
 // Burger Menu
 const burgerBtn = document.querySelector("#burger-btn");
-let burgerHidden = true;
+let burgerExpanded = false;
 
 //X-Ray View
 const xRaySlider = document.querySelector("#x-ray-slider");
@@ -59,10 +59,19 @@ function scrollToLink(id) {
     });
 }
 
+// flips the boolean attribute and turns anything else to false
+function toggleAriaAttribute(target, aria) {
+    let toggle = target.getAttribute(aria);
+    if(!toggle) return false;
+    if(toggle.toLowerCase() === "false") toggle = true;
+    else toggle = false;
+    target.setAttribute(aria, toggle);
+    return toggle;
+}
+
 function toggleMobileMenu() {
     burgerBtn.classList.toggle("clicked");
-    burgerHidden = !burgerHidden;
-    burgerBtn.ariaExpanded = burgerHidden;
+    toggleAriaAttribute(burgerBtn, "aria-expanded");
 }
 
 let min = parseInt(xRaySlider.min);
@@ -97,7 +106,9 @@ function addAnnotation() {
 function positionAnnotation(e) {
     if(!anno) addAnnotation();
 
-    let index = e.currentTarget.index;
+    let spot = e.currentTarget;
+    let index = spot.index;
+    
     anno.querySelector(".title").textContent = delonixInfo[index].title;
     anno.querySelector(".desc").textContent = delonixInfo[index].desc;
     anno.querySelector("img").src = `images/${delonixInfo[index].img}`;
@@ -106,11 +117,15 @@ function positionAnnotation(e) {
 
     // scroll to the annotation
     scrollToLink(anno.id);    
+
+    spot.ariaPressed = true;
 }
 
 // disappears when hotspot not focused anymore
-function hideAnnotation() {
+function hideAnnotation(e) {
+    let spot = e.currentTarget;
     anno.classList.add("hide");
+    spot.ariaPressed = false;
 }
 
 
@@ -130,7 +145,6 @@ xRaySlider.addEventListener("input", setXRayProgress);
 (() => {
     // Canvas
     const canvas = document.querySelector("#explode-view");
-    const canvasCon = document.querySelector("#canvas-con");
     const ctx = canvas.getContext("2d");
 
     const modelViewer = document.querySelector("model-viewer");
@@ -145,6 +159,8 @@ xRaySlider.addEventListener("input", setXRayProgress);
         w: 1280,
         h: 720,
     }; // store the current frame to be altered by the greensock plugin and then rendered
+
+    const hotspots = document.querySelectorAll(".Hotspot");
 
 
     // Canvas Animation
@@ -202,14 +218,17 @@ xRaySlider.addEventListener("input", setXRayProgress);
         },        
     })
 
-    
-    gsap.to(".Hotspot", {
+    let hsRotate = gsap.timeline({
+        paused: true,
+    });
+
+    hsRotate.to(hotspots, {
         rotation: 360,
         duration: 2,
-        yoyo: true,
-        repeat: -1,
         ease: "power1.out",
     })
+
+    //hotspots.addEventListener("click", hotspotAnim);
 
     window.addEventListener("resize", () =>  {
         resizeCanvas();
