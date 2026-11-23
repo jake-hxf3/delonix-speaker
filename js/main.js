@@ -190,7 +190,10 @@ xRaySlider.addEventListener("input", setXRayProgress);
             start: "top top",
             scrub: 2,
         },
-        onUpdate: render
+        onUpdate: render,
+        onComplete: () => {
+            canvas.ariaBusy = false;
+        },
     });
 
     function render() {
@@ -199,6 +202,7 @@ xRaySlider.addEventListener("input", setXRayProgress);
         frames.x = 0.5*(window.innerWidth - frames.w);
         frames.y = 0.5*(window.innerHeight - frames.h);
         ctx.drawImage(images[frames.z], frames.x, frames.y, frames.w, frames.h);
+        canvas.ariaBusy = true;
     }
 
 
