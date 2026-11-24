@@ -85,7 +85,6 @@ function setXRayProgress() {
     let rangeProgress = (val-min)/(max-min)*100;
     let hueShift = rangeProgress*-1.25;
     
-    console.log(xRayProgress);
     document.body.style.setProperty('--x-ray-progress', `${xRayProgress}%`);
     document.body.style.setProperty('--x-ray-box-hue', `${hueShift}`);
     xRaySlider.style.setProperty('--range-progress', `${rangeProgress}%`);

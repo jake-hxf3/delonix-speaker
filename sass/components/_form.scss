@@ -40,10 +40,6 @@ input[type=range] {
     background: transparent;
     cursor: pointer;
 
-    &:focus {
-        outline: none;
-    }
-
 /* Chrome, Edge, Safari */
     &::-moz-range-track {
         @include track;
@@ -71,9 +67,17 @@ input[type=range] {
         width: $range-width;
     }
 
-        &:focus-visible{
-            &::-webkit-slider-thumb, &::-moz-range-thumb {
-                box-shadow: 0 4px 8px color.scale($color: A.$black, $alpha: 3%), 0 0 0 3px color.scale($color: A.$grad-blue-2, $alpha: 3%)
-        }
-    }
+        &:focus{
+            outline: none;
+
+            &::-webkit-slider-thumb { 
+                outline: 0.25rem solid #fff;
+                outline-offset: 0.25rem;
+            }
+                
+            &::-moz-range-thumb{
+                outline: 0.25rem solid #fff;
+                outline-offset: 0.25rem;
+            }
+         }
 }
