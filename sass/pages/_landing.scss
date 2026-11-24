@@ -48,7 +48,7 @@ main {
 
 
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (min-aspect-ratio: 23/20) {
     #hero {
         background-position-x: 10vw;
     }
