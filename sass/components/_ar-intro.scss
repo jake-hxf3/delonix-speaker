@@ -79,10 +79,7 @@ model-viewer {
   //background-image: linear-gradient(A.$grad-blue-1, A.$red, A.$grad-blue-2);
   margin: 0 auto;
   position: relative;
-
-  &:focus:not(:hover) {
-    outline: 0.25rem solid #fff;
-  }
+  @extend %focus-visible;
 }
 
   /* Progress */
