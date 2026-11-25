@@ -80,9 +80,9 @@ model-viewer {
   margin: 0 auto;
   position: relative;
 
-  //&:focus {
-    //outline: 0.25rem solid #fff;
-  //}
+  &:focus:not(:hover) {
+    outline: 0.25rem solid #fff;
+  }
 }
 
   /* Progress */

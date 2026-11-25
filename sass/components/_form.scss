@@ -67,7 +67,7 @@ input[type=range] {
         width: $range-width;
     }
 
-        &:focus{
+        &:focus:not(:hover){
             outline: none;
 
             &::-webkit-slider-thumb { 
