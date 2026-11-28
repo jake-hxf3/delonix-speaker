@@ -73,6 +73,16 @@
   }
 }
 
+%focus-visible {
+    &:focus {
+        outline: none;
+    }
+
+    &:focus-visible {
+        outline: 0.25rem solid #fff;
+    }
+}
+
 %true-bg {
     background-size: cover;
     background-position: center center;

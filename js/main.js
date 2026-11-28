@@ -85,7 +85,6 @@ function setXRayProgress() {
     let rangeProgress = (val-min)/(max-min)*100;
     let hueShift = rangeProgress*-1.25;
     
-    console.log(xRayProgress);
     document.body.style.setProperty('--x-ray-progress', `${xRayProgress}%`);
     document.body.style.setProperty('--x-ray-box-hue', `${hueShift}`);
     xRaySlider.style.setProperty('--range-progress', `${rangeProgress}%`);
@@ -96,13 +95,6 @@ setXRayProgress();
 
 
 // Hotspot Animation & Transitions
-let hsRotate = {
-        scale: 0.65,
-        rotation: 180,
-        duration: 2,
-        ease: "power1.out",
-    };
-
 function addAnnotation() {
     anno = temp.content.cloneNode(true);
     annoCon.appendChild(anno);
@@ -126,7 +118,7 @@ function positionAnnotation(e) {
 
     // do things on the hotspot
     spot.ariaPressed = true;
-    gsap.from(spot,hsRotate);
+    spot.hsRotate.play();
 }
 
 // disappears when hotspot not focused anymore
@@ -134,15 +126,28 @@ function hideAnnotation(e) {
     let spot = e.currentTarget;
     anno.classList.add("hide");
     spot.ariaPressed = false;
-    gsap.to(spot,hsRotate);
+    spot.hsRotate.reverse();
 
 }
 
 
 hotspots.forEach((spot, index) => {
+    const hsRotate = gsap.timeline({
+        paused: true,
+        defaults: {
+            scale: 0.65,
+            rotation: 180,
+            duration: 2,
+            ease: "power1.in",
+        }
+    });
+
+    hsRotate.from(spot, {});
+
     spot.addEventListener("click", positionAnnotation);
     spot.addEventListener("focusout", hideAnnotation);
-    gsap.from(spot,hsRotate);
+
+    spot.hsRotate = hsRotate;
     spot.index = index;
 })
 
